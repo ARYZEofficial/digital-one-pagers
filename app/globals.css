@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand palette — preserved verbatim from the original site */
+  --color-page: #f4f6f8;
+  --color-surface: #ffffff;
+  --color-surface-raised: #fbfcfe;
+  --color-ink: #121417;
+  --color-muted: #5b6472;
+  --color-quiet: #8a93a1;
+  --color-line: #dfe4ea;
+  --color-navy: #192235;
+  --color-navy-2: #101827;
+  --color-blue: #2563eb;
+  --color-green: #11845b;
+  --color-green-2: #0a5f42;
+  --color-red: #c24132;
+  --color-yellow: #f3b23f;
+  --color-mint: #d9f5ea;
+  --color-mint-line: #6fcf97;
+
+  /* Sandbox-specific palette */
+  --color-sand-deep: #001e2b;
+  --color-sand-teal: #007599;
+  --color-sand-mint: #d9f5ea;
+  --color-sand-line: #b8c1c7;
+  --color-sand-fog: #f7f9fa;
+  --color-sand-bay: #274454;
+  --color-sand-fog-2: #586873;
+
+  /* Fonts (set via next/font in layout.tsx) */
+  --font-display: var(--font-display-stack), "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-body-stack), "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-body-stack), "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+
+  /* Shadows */
+  --shadow-brand: 0 18px 44px rgba(18, 20, 23, 0.08);
+  --shadow-brand-strong: 0 28px 80px rgba(18, 20, 23, 0.14);
+  --shadow-navy: 0 24px 60px rgba(25, 34, 53, 0.22);
+  --shadow-green: 0 22px 56px rgba(17, 132, 91, 0.22);
+
+  /* Easing */
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
+}
+
+:root {
+  color-scheme: light;
+  --grid-line: rgba(25, 34, 53, 0.035);
+  --grid-size: 42px;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    color: var(--color-ink);
+    background-color: var(--color-page);
+    background-image:
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+      linear-gradient(180deg, var(--grid-line) 1px, transparent 1px);
+    background-size: var(--grid-size) var(--grid-size);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  a, button, input, select, textarea {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  a { color: inherit; }
+}
+
+/* Display / heading utilities */
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.025em;
+}
+
+/* Section eyebrow label */
+.section-label {
+  margin: 0;
+  color: var(--color-quiet);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+/* Display heading scale */
+.display-1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 6.4vw, 5.4rem);
+  font-weight: 600;
+  line-height: 0.96;
+  letter-spacing: -0.03em;
+}
+
+.display-2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.display-3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 2.4vw, 1.85rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+
+/* CTA pulse — primary "ink" buttons get a subtle accent glow.
+   Halts on hover. Disabled when prefers-reduced-motion is set. */
+@keyframes brand-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.32); }
+  50%      { box-shadow: 0 0 0 14px rgba(37, 99, 235, 0); }
+}
+
+.cta-pulse {
+  animation: brand-pulse 2.6s ease-in-out infinite;
+}
+.cta-pulse:hover, .cta-pulse:focus-visible {
+  animation-play-state: paused;
+}
+
+/* Mastercard mark dots */
+.mc-dot {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+}
+
+/* Sandbox page swaps the body bg to its lighter fog */
+body[data-page="sandbox"] {
+  background-color: var(--color-sand-fog);
+  color: var(--color-sand-deep);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .cta-pulse { animation: none; }
+}
+
+/* Selection */
+::selection {
+  background: rgba(37, 99, 235, 0.18);
+  color: var(--color-ink);
+}
