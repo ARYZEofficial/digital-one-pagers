@@ -16,8 +16,16 @@ const currencies: Currency[] = ["EUR", "GBP", "USD", "DKK"];
 export function Calculator() {
   const [monthlyTransactions, setMonthlyTransactions] = useState(750_000);
   const [averageTransactionValue, setAverageTransactionValue] = useState(50);
-  const [currentCardFeePercent, setCurrentCardFeePercent] = useState(0);
+  // Stored as a string so users can fully clear the field; parsed for math.
+  // Accepts both "." and "," as decimal separators (locale-friendly).
+  const [cardFeeInput, setCardFeeInput] = useState<string>("");
   const [currency, setCurrency] = useState<Currency>("EUR");
+
+  const currentCardFeePercent = useMemo(() => {
+    const normalized = cardFeeInput.replace(",", ".");
+    const n = Number.parseFloat(normalized);
+    return Number.isFinite(n) && n > 0 ? n : 0;
+  }, [cardFeeInput]);
 
   const result = useMemo(
     () =>
@@ -90,19 +98,18 @@ export function Calculator() {
           </Field>
           <Field label="Current card fee %">
             <input
-              type="number"
-              min={0}
-              step={0.01}
-              value={currentCardFeePercent}
-              onChange={(e) =>
-                setCurrentCardFeePercent(
-                  Number.parseFloat(e.target.value) || 0,
-                )
-              }
-              className={cn(
-                fieldInput,
-                "[appearance:textfield] [&::-webkit-inner-spin-button]:hidden [&::-webkit-outer-spin-button]:hidden",
-              )}
+              type="text"
+              inputMode="decimal"
+              pattern="[0-9]*[.,]?[0-9]*"
+              placeholder="e.g. 1.5"
+              value={cardFeeInput}
+              onChange={(e) => {
+                // Allow only digits + a single decimal separator (".", ",").
+                const cleaned = e.target.value.replace(/[^0-9.,]/g, "");
+                setCardFeeInput(cleaned);
+              }}
+              className={fieldInput}
+              aria-label="Current card fee percent"
             />
           </Field>
           <Field label="Currency">
