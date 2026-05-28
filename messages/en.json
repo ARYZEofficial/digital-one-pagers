@@ -1,0 +1,488 @@
+{
+  "metadata": {
+    "default": {
+      "description": "Aryze builds payment products for operators that need clearer control, clearer evidence, and payment flows that hold up in practice.",
+      "ogDescription": "Built in Copenhagen for better money movement. Pay by Bank, Stablecoin Factory, Digital Cash."
+    },
+    "payByBank": {
+      "title": "Pay by Bank",
+      "description": "Pay by Bank helps UK merchants reduce card friction and understand potential payment savings."
+    },
+    "stablecoinFactory": {
+      "title": "Stablecoin Factory",
+      "description": "Stablecoin Factory is a coming-soon Aryze product for simpler stablecoin deployment."
+    },
+    "digitalCash": {
+      "title": "Digital Cash",
+      "description": "Digital Cash is a coming-soon Aryze product for licensed institutions operating digital money."
+    },
+    "sandboxAccess": {
+      "title": "Sandbox Access",
+      "description": "Request sandbox access for Aryze Pay by Bank and share your company, payment setup, and testing intent."
+    }
+  },
+  "common": {
+    "talkToUs": "Talk to us",
+    "requestSandbox": "Request sandbox",
+    "backToOverview": "Back to overview",
+    "comingSoon": "Coming soon",
+    "readMore": "Read more",
+    "for": "For",
+    "helpsWith": "Helps with"
+  },
+  "header": {
+    "homeAriaLabel": "Aryze home",
+    "language": "Language"
+  },
+  "footer": {
+    "copyright": "© {year} Aryze. Built in Copenhagen.",
+    "overview": "Overview",
+    "payByBank": "Pay by Bank",
+    "stablecoinFactory": "Stablecoin Factory",
+    "digitalCash": "Digital Cash"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "About Aryze",
+      "title": "Built in Copenhagen for better money movement.",
+      "body": "Aryze is a Danish fintech company founded in 2017. We build payment products for operators that need clearer control, clearer evidence, and payment flows that hold up in practice.",
+      "ctaPrimary": "Start with Pay by Bank",
+      "ctaSecondary": "Visit aryze.io",
+      "teamEyebrow": "Team",
+      "teamTitle": "Designed for operators, not demos.",
+      "teamBody": "The team behind Aryze cares about details, controls, and what happens after launch."
+    },
+    "about": {
+      "mission": {
+        "label": "Mission",
+        "body": "Build payment products that give merchants more control, clearer evidence, and fewer operational compromises."
+      },
+      "vision": {
+        "label": "Vision",
+        "body": "A payments environment where merchants can move faster without sacrificing clarity, control, or accountability."
+      },
+      "values": {
+        "label": "Values",
+        "body": "Clear rules, evidence over story, operator-first design, and scaling without losing control."
+      }
+    },
+    "products": {
+      "eyebrow": "Product one-pagers",
+      "title": "Choose where to go next.",
+      "payByBank": {
+        "eyebrow": "High-volume merchants",
+        "tagline": "Get paid better.",
+        "body": "For UK payment-driven merchants where card friction, settlement, or chargebacks affect performance."
+      },
+      "stablecoinFactory": {
+        "eyebrow": "Token issuers",
+        "tagline": "Launch faster.",
+        "body": "For builders and technical teams with a clear stablecoin idea."
+      },
+      "digitalCash": {
+        "eyebrow": "Licensed institutions",
+        "tagline": "Operate properly.",
+        "body": "For already-licensed institutions with digital cash operating needs."
+      }
+    },
+    "bottomCta": {
+      "eyebrow": "For payment-driven merchants",
+      "title": "See what fixed pricing could mean for your business.",
+      "body": "Run the savings calculator on Pay by Bank, then book a call to walk through your payment flow.",
+      "ctaPrimary": "Open Pay by Bank"
+    }
+  },
+  "payByBank": {
+    "hero": {
+      "eyebrow": "Pay by Bank",
+      "title": "Stop letting card fees scale with your growth.",
+      "body": "For casinos, iGaming, and high-volume merchants that need predictable pricing, fewer disputes, and faster deposits via Mastercard Payment Rails.",
+      "ctaPrimary": "Calculate savings",
+      "metricLabel": "Best fit",
+      "metricValue": "Casinos, iGaming, betting, and high-volume deposit flows.",
+      "metricBullets": {
+        "fixedFees": "Fixed flat fees",
+        "chargebacks": "Near-zero chargebacks",
+        "rails": "Mastercard Open Banking rails"
+      }
+    },
+    "pain": {
+      "eyebrow": "Payment pain",
+      "title": "Is your checkout costing you?",
+      "body": "The three costs most high-volume merchants feel first.",
+      "items": {
+        "fees": {
+          "title": "High card fees",
+          "body": "Percentage costs grow with every deposit."
+        },
+        "chargebacks": {
+          "title": "Chargebacks drain time",
+          "body": "Disputes cost revenue and operational focus."
+        },
+        "abandon": {
+          "title": "Players abandon deposits",
+          "body": "Card details add friction at checkout."
+        }
+      }
+    },
+    "value": {
+      "eyebrow": "What changes",
+      "title": "What merchants gain.",
+      "body": "A new payment method without rebuilding your checkout.",
+      "items": {
+        "fixed": {
+          "title": "Fixed per transaction",
+          "body": "Predictable cost per payment."
+        },
+        "chargebacks": {
+          "title": "Near-zero chargebacks",
+          "body": "Irrevocable A2A payments."
+        },
+        "direct": {
+          "title": "Direct bank payment",
+          "body": "Players pay directly from their bank."
+        },
+        "auth": {
+          "title": "Secure authentication",
+          "body": "Bank-level SCA approval."
+        },
+        "rails": {
+          "title": "Mastercard rails",
+          "body": "Built for deposits at scale."
+        }
+      }
+    },
+    "onboarding": {
+      "eyebrow": "Implementation",
+      "title": "From payment flow to live processing.",
+      "body": "We map your payment flow, complete KYB, integrate, test, and support launch.",
+      "steps": {
+        "map": {
+          "title": "Map payment flow",
+          "body": "Understand your deposit flow, markets, volume, and current payment friction."
+        },
+        "kyb": {
+          "title": "Complete KYB",
+          "body": "Collect company details, required documents, and approvals."
+        },
+        "integrate": {
+          "title": "Integrate & test",
+          "body": "Set up payment flows, callbacks, reporting, and test journeys."
+        },
+        "golive": {
+          "title": "Go live",
+          "body": "Launch with monitoring, support, and a clear handover."
+        }
+      }
+    },
+    "about": {
+      "eyebrow": "About Aryze",
+      "title": "Built for predictable money movement.",
+      "body": "Founded in Denmark in 2017, Aryze PSP builds payment infrastructure for predictable money movement.",
+      "points": {
+        "focus": {
+          "label": "Focus",
+          "body": "Bank payments and digital money infrastructure."
+        },
+        "market": {
+          "label": "Market",
+          "body": "Serving regulated and payment-heavy merchants."
+        },
+        "access": {
+          "label": "Access",
+          "body": "UK licence via partnership. Mastercard Open Banking rails."
+        }
+      }
+    },
+    "demoCta": {
+      "eyebrow": "Talk to us",
+      "title": "Ready to cut transaction costs?",
+      "body": "Book a short call and we'll map your payment flow and potential fit."
+    },
+    "calculator": {
+      "eyebrow": "Savings calculator",
+      "title": "Estimate your savings.",
+      "body": "See what fixed pricing could mean for your business.",
+      "disclaimer": "Indicative estimate only. Actual pricing depends on transaction volume, payment flow, and commercial setup.",
+      "fields": {
+        "monthlyTransactions": "Monthly transactions",
+        "averagePayment": "Average payment amount",
+        "cardFee": "Current card fee %",
+        "cardFeePlaceholder": "e.g. 1.5",
+        "cardFeeAria": "Current card fee percent",
+        "currency": "Currency"
+      },
+      "transactionOptions": {
+        "under50k": "Under 50,000",
+        "50to100k": "50,000 – 100,000",
+        "100to250k": "100,000 – 250,000",
+        "250to500k": "250,000 – 500,000",
+        "500to1m": "500,000 – 1M",
+        "1to2_5m": "1M – 2.5M",
+        "2_5to5m": "2.5M – 5M",
+        "5mPlus": "5M+"
+      },
+      "averageOptions": {
+        "under20": "Under 20",
+        "20to35": "20 – 35",
+        "35to75": "35 – 75",
+        "75to150": "75 – 150",
+        "150plus": "150+"
+      },
+      "result": {
+        "potentialSaving": "Potential saving",
+        "estimatedMonthly": "Estimated <b>monthly</b> savings",
+        "noSaving": "No estimated saving",
+        "savingNote": "Based on your current card fee compared with indicative Aryze fixed transaction pricing.",
+        "negativeNote": "Current card pricing may be cheaper at this payment amount.",
+        "monthlyVolume": "Monthly payment volume",
+        "currentCardCost": "Current card cost",
+        "yearlySavings": "Estimated yearly savings",
+        "fixedPrice": "Aryze fixed price",
+        "perTx": "{price} / tx"
+      }
+    }
+  },
+  "stablecoinFactory": {
+    "hero": {
+      "eyebrow": "Stablecoin Factory",
+      "title": "Launch a simple stablecoin faster.",
+      "body": "A coming-soon deployment flow for builders and technical teams with a clear stablecoin idea."
+    },
+    "forBody": "Builders, technical teams, product teams, innovation teams, and exploratory operators.",
+    "helpsBody": "Moving from stablecoin concept to simple deployment without a long enterprise process.",
+    "comingSoon": {
+      "eyebrow": "Coming soon",
+      "title": "This product page is not active yet.",
+      "body": "Pay by Bank is the current focus. Stablecoin Factory remains part of the Aryze product architecture."
+    }
+  },
+  "digitalCash": {
+    "hero": {
+      "eyebrow": "Digital Cash",
+      "title": "Operate digital cash properly.",
+      "body": "A coming-soon infrastructure layer for already-licensed institutions with real digital cash operating needs."
+    },
+    "forBody": "Already-licensed institutions with digital cash, settlement, treasury, liquidity, or value-movement use cases.",
+    "helpsBody": "Operating digital cash under the institution's own licence, governance, and control.",
+    "comingSoon": {
+      "eyebrow": "Coming soon",
+      "title": "This product page is not active yet.",
+      "body": "Pay by Bank is the current focus. Digital Cash remains the institutional infrastructure direction in the Aryze product suite."
+    }
+  },
+  "sandbox": {
+    "intro": {
+      "eyebrow": "Aryze Pay by Bank",
+      "title": "Get sandbox access for Pay by Bank",
+      "body": "Test a direct account-to-account payment flow built for merchants that need faster settlement, lower payment friction, and stronger control over incoming payments.",
+      "body2": "Tell us about your business, payment setup, and what you want to test. We'll use this to understand whether Pay by Bank is the right fit and prepare the right sandbox access for your use case."
+    },
+    "aside": {
+      "eyebrow": "Sandbox overview",
+      "title": "Built for payment-driven merchants",
+      "body": "Pay by Bank is designed for merchants where payments affect margin, settlement, cash flow, customer experience, chargebacks, refunds, reconciliation, and daily operations.",
+      "benefits": {
+        "one": "Test the payment flow before going live",
+        "two": "Share your payment setup and use case",
+        "three": "Get the right sandbox access for your business"
+      }
+    },
+    "form": {
+      "stepProgress": "Step {current} of {total}",
+      "stepTitles": {
+        "company": "Your company",
+        "business": "Your business",
+        "payment": "Current payment setup",
+        "intent": "Sandbox intent"
+      },
+      "consent": "By submitting this form, you agree that Aryze may contact you about your sandbox request and related product information.",
+      "back": "Back",
+      "continue": "Continue",
+      "submit": "Submit request",
+      "submitting": "Submitting...",
+      "fields": {
+        "workEmail": "Work email",
+        "workEmailPlaceholder": "name@company.com",
+        "fullName": "Full name",
+        "fullNamePlaceholder": "Your full name",
+        "companyName": "Company name",
+        "companyNamePlaceholder": "Company Ltd",
+        "companyWebsite": "Company website",
+        "companyWebsitePlaceholder": "https://company.com",
+        "role": "Your role",
+        "rolePlaceholder": "Select role",
+        "market": "Where does your business operate?",
+        "marketPlaceholder": "Select market",
+        "businessType": "What type of business are you?",
+        "businessTypePlaceholder": "Select business type",
+        "paymentFlow": "Which payment flow do you want to improve or test?",
+        "paymentFlowPlaceholder": "Select payment flow",
+        "paymentMethods": "Which payment methods do you use today?",
+        "monthlyVolume": "What is your estimated monthly transaction volume?",
+        "monthlyVolumePlaceholder": "Select volume",
+        "averageSize": "What is your average transaction size?",
+        "averageSizePlaceholder": "Select average size",
+        "paymentChallenges": "What are your main payment challenges today?",
+        "sandboxTests": "What do you want to test in the sandbox?",
+        "technicalTeam": "Do you have a technical team ready to test?",
+        "technicalTeamPlaceholder": "Select readiness",
+        "testingStart": "When would you like to start testing?",
+        "testingStartPlaceholder": "Select timeline",
+        "additionalContext": "Anything else we should know?",
+        "additionalContextPlaceholder": "Tell us about your payment flow, current setup, or what you want to test.",
+        "notSure": "Not sure"
+      },
+      "errors": {
+        "workEmailRequired": "Work email is required.",
+        "workEmailInvalid": "Enter a valid work email.",
+        "fullNameRequired": "Full name is required.",
+        "companyNameRequired": "Company name is required.",
+        "companyWebsiteRequired": "Company website is required.",
+        "companyWebsiteInvalid": "Enter a valid company website.",
+        "roleRequired": "Role is required.",
+        "marketRequired": "Select a market.",
+        "businessTypeRequired": "Business type is required.",
+        "paymentFlowRequired": "Payment flow is required.",
+        "selectAtLeastOne": "Select at least one option.",
+        "monthlyVolumeRequired": "Monthly transaction volume is required.",
+        "technicalTeamRequired": "Technical team readiness is required.",
+        "testingStartRequired": "Testing timeline is required."
+      },
+      "options": {
+        "roles": {
+          "founder": "Founder / CEO",
+          "cfo": "CFO / Finance Lead",
+          "headPayments": "Head of Payments",
+          "paymentsManager": "Payments Manager",
+          "productLead": "Product Lead",
+          "opsLead": "Operations Lead",
+          "riskLead": "Risk / Fraud Lead",
+          "cto": "CTO / Engineering Lead",
+          "developer": "Developer / Technical Lead",
+          "other": "Other"
+        },
+        "markets": {
+          "uk": "United Kingdom",
+          "denmark": "Denmark",
+          "eu": "European Union",
+          "global": "Global",
+          "other": "Other"
+        },
+        "businessTypes": {
+          "gaming": "Gaming",
+          "betting": "Betting",
+          "trading": "Trading",
+          "highRisk": "High-risk merchant",
+          "ecommerce": "E-commerce",
+          "wallet": "Wallet",
+          "remittance": "Remittance",
+          "marketplace": "Marketplace",
+          "financialServices": "Financial services",
+          "other": "Other payment-driven business"
+        },
+        "paymentFlows": {
+          "checkout": "Checkout payments",
+          "deposits": "Deposits",
+          "topups": "Top-ups",
+          "funding": "Customer funding",
+          "highValue": "High-value payments",
+          "recurring": "Recurring payments",
+          "refunds": "Refunds",
+          "notSure": "Not sure yet"
+        },
+        "paymentMethods": {
+          "cards": "Cards",
+          "bankTransfer": "Bank transfer",
+          "openBanking": "Open banking",
+          "wallets": "Wallets",
+          "crypto": "Crypto / stablecoins",
+          "local": "Local payment methods",
+          "other": "Other"
+        },
+        "monthlyVolumes": {
+          "under1k": "Under 1,000 transactions",
+          "1to10k": "1,000 to 10,000 transactions",
+          "10to100k": "10,000 to 100,000 transactions",
+          "100kPlus": "100,000+ transactions",
+          "notSure": "Not sure"
+        },
+        "paymentChallenges": {
+          "highFees": "Card fees are too high",
+          "slowSettlement": "Settlement is too slow",
+          "chargebacks": "Chargebacks or disputes create problems",
+          "refunds": "Refunds are hard to manage",
+          "reconciliation": "Reconciliation takes too much manual work",
+          "visibility": "Payment status visibility is weak",
+          "acceptance": "Card acceptance is unreliable",
+          "alternative": "We want a better alternative to card rails",
+          "other": "Other"
+        },
+        "sandboxTests": {
+          "initiation": "Payment initiation",
+          "authorisation": "Customer bank authorisation flow",
+          "checkout": "Checkout payment flow",
+          "deposit": "Deposit or top-up flow",
+          "callbacks": "Payment status callbacks",
+          "refunds": "Refund handling",
+          "reporting": "Reporting and reconciliation",
+          "dashboard": "Merchant dashboard",
+          "api": "API integration",
+          "notSure": "Not sure yet"
+        },
+        "techReadiness": {
+          "now": "Yes, we can test now",
+          "notImmediately": "Yes, but not immediately",
+          "commercialFirst": "No, we need commercial review first",
+          "notSure": "Not sure"
+        },
+        "timelines": {
+          "asap": "As soon as possible",
+          "2weeks": "Within 2 weeks",
+          "1month": "Within 1 month",
+          "thisQuarter": "Later this quarter",
+          "notSure": "Not sure yet"
+        },
+        "bands": {
+          "uk": {
+            "b1": "Under £25",
+            "b2": "£25 to £100",
+            "b3": "£100 to £500",
+            "b4": "£500 to £2,500",
+            "b5": "£2,500+"
+          },
+          "denmark": {
+            "b1": "Under DKK 200",
+            "b2": "DKK 200 to DKK 750",
+            "b3": "DKK 750 to DKK 3,750",
+            "b4": "DKK 3,750 to DKK 18,500",
+            "b5": "DKK 18,500+"
+          },
+          "eu": {
+            "b1": "Under €25",
+            "b2": "€25 to €100",
+            "b3": "€100 to €500",
+            "b4": "€500 to €2,500",
+            "b5": "€2,500+"
+          },
+          "global": {
+            "b1": "Under $25",
+            "b2": "$25 to $100",
+            "b3": "$100 to $500",
+            "b4": "$500 to $2,500",
+            "b5": "$2,500+"
+          }
+        }
+      }
+    },
+    "success": {
+      "resendEyebrow": "Request received",
+      "mailtoEyebrow": "Request prepared",
+      "resendTitle": "Thank you — we'll be in touch.",
+      "mailtoTitle": "Your sandbox request email is ready.",
+      "resendBody": "Your sandbox request has been sent to the Aryze team. Expect a response within one business day with the next steps.",
+      "mailtoBody": "Your mail app should open with the sandbox request addressed to Aryze. Send the email to share your company, payment use case, and technical setup.",
+      "back": "Back to Pay by Bank"
+    }
+  }
+}

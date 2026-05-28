@@ -36,20 +36,20 @@ export function computeSavings(input: CalculatorInput): CalculatorResult {
 }
 
 export const monthlyTransactionOptions = [
-  { value: 25_000, label: "Under 50,000" },
-  { value: 75_000, label: "50,000 – 100,000" },
-  { value: 175_000, label: "100,000 – 250,000" },
-  { value: 375_000, label: "250,000 – 500,000" },
-  { value: 750_000, label: "500,000 – 1M" },
-  { value: 1_750_000, label: "1M – 2.5M" },
-  { value: 3_750_000, label: "2.5M – 5M" },
-  { value: 5_000_000, label: "5M+" },
+  { value: 25_000, key: "under50k" },
+  { value: 75_000, key: "50to100k" },
+  { value: 175_000, key: "100to250k" },
+  { value: 375_000, key: "250to500k" },
+  { value: 750_000, key: "500to1m" },
+  { value: 1_750_000, key: "1to2_5m" },
+  { value: 3_750_000, key: "2_5to5m" },
+  { value: 5_000_000, key: "5mPlus" },
 ] as const;
 
 export const averageTransactionValueOptions = [
-  { value: 10, label: "Under 20" },
-  { value: 25, label: "20 – 35" },
-  { value: 50, label: "35 – 75" },
-  { value: 100, label: "75 – 150" },
-  { value: 250, label: "150+" },
+  { value: 10, key: "under20" },
+  { value: 25, key: "20to35" },
+  { value: 50, key: "35to75" },
+  { value: 100, key: "75to150" },
+  { value: 250, key: "150plus" },
 ] as const;

@@ -1,0 +1,488 @@
+{
+  "metadata": {
+    "default": {
+      "description": "Aryze sviluppa prodotti di pagamento per operatori che hanno bisogno di un controllo più chiaro, prove più solide e flussi di pagamento che reggono nella pratica.",
+      "ogDescription": "Costruito a Copenaghen per movimentare il denaro meglio. Pay by Bank, Stablecoin Factory, Digital Cash."
+    },
+    "payByBank": {
+      "title": "Pay by Bank",
+      "description": "Pay by Bank aiuta i merchant del Regno Unito a ridurre le frizioni delle carte e a stimare i potenziali risparmi sui pagamenti."
+    },
+    "stablecoinFactory": {
+      "title": "Stablecoin Factory",
+      "description": "Stablecoin Factory è un prodotto Aryze in arrivo per un deployment di stablecoin più semplice."
+    },
+    "digitalCash": {
+      "title": "Digital Cash",
+      "description": "Digital Cash è un prodotto Aryze in arrivo per istituzioni autorizzate che operano con moneta digitale."
+    },
+    "sandboxAccess": {
+      "title": "Accesso Sandbox",
+      "description": "Richiedi l'accesso alla sandbox di Aryze Pay by Bank e condividi la tua azienda, il setup dei pagamenti e gli obiettivi di test."
+    }
+  },
+  "common": {
+    "talkToUs": "Parla con noi",
+    "requestSandbox": "Richiedi la sandbox",
+    "backToOverview": "Torna alla panoramica",
+    "comingSoon": "In arrivo",
+    "readMore": "Scopri di più",
+    "for": "Per",
+    "helpsWith": "Aiuta con"
+  },
+  "header": {
+    "homeAriaLabel": "Home di Aryze",
+    "language": "Lingua"
+  },
+  "footer": {
+    "copyright": "© {year} Aryze. Costruito a Copenaghen.",
+    "overview": "Panoramica",
+    "payByBank": "Pay by Bank",
+    "stablecoinFactory": "Stablecoin Factory",
+    "digitalCash": "Digital Cash"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Chi è Aryze",
+      "title": "Costruito a Copenaghen per movimentare il denaro meglio.",
+      "body": "Aryze è una società fintech danese fondata nel 2017. Sviluppiamo prodotti di pagamento per operatori che hanno bisogno di un controllo più chiaro, prove più solide e flussi di pagamento che reggono nella pratica.",
+      "ctaPrimary": "Inizia con Pay by Bank",
+      "ctaSecondary": "Visita aryze.io",
+      "teamEyebrow": "Team",
+      "teamTitle": "Progettato per gli operatori, non per le demo.",
+      "teamBody": "Il team di Aryze tiene ai dettagli, ai controlli e a ciò che accade dopo il lancio."
+    },
+    "about": {
+      "mission": {
+        "label": "Missione",
+        "body": "Sviluppare prodotti di pagamento che diano ai merchant più controllo, prove più chiare e meno compromessi operativi."
+      },
+      "vision": {
+        "label": "Visione",
+        "body": "Un ecosistema di pagamenti in cui i merchant possano muoversi più velocemente senza sacrificare chiarezza, controllo o responsabilità."
+      },
+      "values": {
+        "label": "Valori",
+        "body": "Regole chiare, prove più che racconti, design orientato all'operatore e crescita senza perdere il controllo."
+      }
+    },
+    "products": {
+      "eyebrow": "One-pager di prodotto",
+      "title": "Scegli dove andare.",
+      "payByBank": {
+        "eyebrow": "Merchant ad alto volume",
+        "tagline": "Incassa meglio.",
+        "body": "Per i merchant del Regno Unito orientati ai pagamenti dove frizioni delle carte, regolamento o chargeback incidono sulle performance."
+      },
+      "stablecoinFactory": {
+        "eyebrow": "Emittenti di token",
+        "tagline": "Lancia più velocemente.",
+        "body": "Per builder e team tecnici con un'idea chiara di stablecoin."
+      },
+      "digitalCash": {
+        "eyebrow": "Istituzioni autorizzate",
+        "tagline": "Opera come si deve.",
+        "body": "Per istituzioni già autorizzate con esigenze operative di moneta digitale."
+      }
+    },
+    "bottomCta": {
+      "eyebrow": "Per i merchant orientati ai pagamenti",
+      "title": "Scopri cosa potrebbe significare un prezzo fisso per la tua attività.",
+      "body": "Usa il calcolatore di risparmio su Pay by Bank, poi prenota una call per analizzare il tuo flusso di pagamento.",
+      "ctaPrimary": "Apri Pay by Bank"
+    }
+  },
+  "payByBank": {
+    "hero": {
+      "eyebrow": "Pay by Bank",
+      "title": "Smetti di far crescere le commissioni delle carte insieme al tuo business.",
+      "body": "Per casinò, iGaming e merchant ad alto volume che hanno bisogno di prezzi prevedibili, meno controversie e depositi più rapidi tramite Mastercard Payment Rails.",
+      "ctaPrimary": "Calcola i risparmi",
+      "metricLabel": "Ideale per",
+      "metricValue": "Casinò, iGaming, scommesse e flussi di deposito ad alto volume.",
+      "metricBullets": {
+        "fixedFees": "Commissioni fisse",
+        "chargebacks": "Chargeback quasi azzerati",
+        "rails": "Rail Mastercard Open Banking"
+      }
+    },
+    "pain": {
+      "eyebrow": "Criticità nei pagamenti",
+      "title": "Il tuo checkout ti sta costando?",
+      "body": "I tre costi che i merchant ad alto volume avvertono per primi.",
+      "items": {
+        "fees": {
+          "title": "Commissioni elevate sulle carte",
+          "body": "I costi in percentuale crescono a ogni deposito."
+        },
+        "chargebacks": {
+          "title": "I chargeback consumano tempo",
+          "body": "Le controversie costano ricavi e attenzione operativa."
+        },
+        "abandon": {
+          "title": "I giocatori abbandonano i depositi",
+          "body": "I dati della carta aggiungono attrito al checkout."
+        }
+      }
+    },
+    "value": {
+      "eyebrow": "Cosa cambia",
+      "title": "Cosa ci guadagnano i merchant.",
+      "body": "Un nuovo metodo di pagamento senza ricostruire il checkout.",
+      "items": {
+        "fixed": {
+          "title": "Costo fisso per transazione",
+          "body": "Costo prevedibile per ogni pagamento."
+        },
+        "chargebacks": {
+          "title": "Chargeback quasi azzerati",
+          "body": "Pagamenti A2A irrevocabili."
+        },
+        "direct": {
+          "title": "Pagamento diretto dalla banca",
+          "body": "I giocatori pagano direttamente dal proprio conto."
+        },
+        "auth": {
+          "title": "Autenticazione sicura",
+          "body": "Approvazione SCA a livello bancario."
+        },
+        "rails": {
+          "title": "Rail Mastercard",
+          "body": "Pensato per i depositi su larga scala."
+        }
+      }
+    },
+    "onboarding": {
+      "eyebrow": "Implementazione",
+      "title": "Dal flusso di pagamento all'elaborazione in produzione.",
+      "body": "Mappiamo il tuo flusso di pagamento, completiamo la KYB, integriamo, testiamo e supportiamo il lancio.",
+      "steps": {
+        "map": {
+          "title": "Mappa il flusso di pagamento",
+          "body": "Comprendiamo il tuo flusso di deposito, i mercati, i volumi e le attuali frizioni di pagamento."
+        },
+        "kyb": {
+          "title": "Completa la KYB",
+          "body": "Raccolta dei dati aziendali, dei documenti richiesti e delle approvazioni."
+        },
+        "integrate": {
+          "title": "Integra e testa",
+          "body": "Configurazione di flussi di pagamento, callback, reportistica e percorsi di test."
+        },
+        "golive": {
+          "title": "Vai live",
+          "body": "Lancio con monitoraggio, supporto e un passaggio di consegne chiaro."
+        }
+      }
+    },
+    "about": {
+      "eyebrow": "Chi è Aryze",
+      "title": "Costruito per una movimentazione prevedibile del denaro.",
+      "body": "Fondata in Danimarca nel 2017, Aryze PSP sviluppa infrastrutture di pagamento per una movimentazione prevedibile del denaro.",
+      "points": {
+        "focus": {
+          "label": "Focus",
+          "body": "Pagamenti bancari e infrastruttura per la moneta digitale."
+        },
+        "market": {
+          "label": "Mercato",
+          "body": "Al servizio di merchant regolamentati e con elevati volumi di pagamento."
+        },
+        "access": {
+          "label": "Accesso",
+          "body": "Licenza UK tramite partnership. Rail Mastercard Open Banking."
+        }
+      }
+    },
+    "demoCta": {
+      "eyebrow": "Parla con noi",
+      "title": "Pronto a ridurre i costi di transazione?",
+      "body": "Prenota una breve call e mapperemo il tuo flusso di pagamento e la possibile compatibilità."
+    },
+    "calculator": {
+      "eyebrow": "Calcolatore di risparmio",
+      "title": "Stima i tuoi risparmi.",
+      "body": "Scopri cosa potrebbe significare un prezzo fisso per la tua attività.",
+      "disclaimer": "Stima puramente indicativa. Il prezzo effettivo dipende dal volume di transazioni, dal flusso di pagamento e dall'accordo commerciale.",
+      "fields": {
+        "monthlyTransactions": "Transazioni mensili",
+        "averagePayment": "Importo medio del pagamento",
+        "cardFee": "Commissione carta attuale %",
+        "cardFeePlaceholder": "es. 1,5",
+        "cardFeeAria": "Percentuale della commissione carta attuale",
+        "currency": "Valuta"
+      },
+      "transactionOptions": {
+        "under50k": "Meno di 50.000",
+        "50to100k": "50.000 – 100.000",
+        "100to250k": "100.000 – 250.000",
+        "250to500k": "250.000 – 500.000",
+        "500to1m": "500.000 – 1M",
+        "1to2_5m": "1M – 2,5M",
+        "2_5to5m": "2,5M – 5M",
+        "5mPlus": "5M+"
+      },
+      "averageOptions": {
+        "under20": "Meno di 20",
+        "20to35": "20 – 35",
+        "35to75": "35 – 75",
+        "75to150": "75 – 150",
+        "150plus": "150+"
+      },
+      "result": {
+        "potentialSaving": "Risparmio potenziale",
+        "estimatedMonthly": "Risparmio <b>mensile</b> stimato",
+        "noSaving": "Nessun risparmio stimato",
+        "savingNote": "Calcolato confrontando la tua commissione carta attuale con il prezzo fisso per transazione indicativo di Aryze.",
+        "negativeNote": "Con questo importo di pagamento il prezzo attuale delle carte potrebbe essere più conveniente.",
+        "monthlyVolume": "Volume di pagamento mensile",
+        "currentCardCost": "Costo attuale delle carte",
+        "yearlySavings": "Risparmio annuo stimato",
+        "fixedPrice": "Prezzo fisso Aryze",
+        "perTx": "{price} / tx"
+      }
+    }
+  },
+  "stablecoinFactory": {
+    "hero": {
+      "eyebrow": "Stablecoin Factory",
+      "title": "Lancia una stablecoin semplice più velocemente.",
+      "body": "Un flusso di deployment in arrivo per builder e team tecnici con un'idea chiara di stablecoin."
+    },
+    "forBody": "Builder, team tecnici, team di prodotto, team di innovazione e operatori esplorativi.",
+    "helpsBody": "Passare dal concetto di stablecoin a un deployment semplice senza un lungo processo enterprise.",
+    "comingSoon": {
+      "eyebrow": "In arrivo",
+      "title": "Questa pagina di prodotto non è ancora attiva.",
+      "body": "Pay by Bank è la priorità attuale. Stablecoin Factory resta parte dell'architettura di prodotto di Aryze."
+    }
+  },
+  "digitalCash": {
+    "hero": {
+      "eyebrow": "Digital Cash",
+      "title": "Opera con la moneta digitale come si deve.",
+      "body": "Un livello infrastrutturale in arrivo per istituzioni già autorizzate con reali esigenze operative di moneta digitale."
+    },
+    "forBody": "Istituzioni già autorizzate con casi d'uso di moneta digitale, regolamento, tesoreria, liquidità o movimentazione di valore.",
+    "helpsBody": "Operare con la moneta digitale sotto la licenza, la governance e il controllo dell'istituzione stessa.",
+    "comingSoon": {
+      "eyebrow": "In arrivo",
+      "title": "Questa pagina di prodotto non è ancora attiva.",
+      "body": "Pay by Bank è la priorità attuale. Digital Cash resta la direzione infrastrutturale istituzionale nella suite di prodotti Aryze."
+    }
+  },
+  "sandbox": {
+    "intro": {
+      "eyebrow": "Aryze Pay by Bank",
+      "title": "Ottieni l'accesso alla sandbox di Pay by Bank",
+      "body": "Testa un flusso di pagamento diretto da conto a conto pensato per i merchant che hanno bisogno di regolamenti più rapidi, meno attrito nei pagamenti e un controllo più solido sugli incassi.",
+      "body2": "Raccontaci la tua attività, il tuo setup di pagamento e cosa vuoi testare. Useremo queste informazioni per capire se Pay by Bank è la soluzione giusta e preparare l'accesso alla sandbox più adatto al tuo caso d'uso."
+    },
+    "aside": {
+      "eyebrow": "Panoramica sandbox",
+      "title": "Pensato per i merchant orientati ai pagamenti",
+      "body": "Pay by Bank è progettato per i merchant in cui i pagamenti incidono su margini, regolamento, cash flow, esperienza cliente, chargeback, rimborsi, riconciliazione e operatività quotidiana.",
+      "benefits": {
+        "one": "Testa il flusso di pagamento prima di andare live",
+        "two": "Condividi il tuo setup di pagamento e il caso d'uso",
+        "three": "Ottieni l'accesso alla sandbox giusto per la tua attività"
+      }
+    },
+    "form": {
+      "stepProgress": "Passo {current} di {total}",
+      "stepTitles": {
+        "company": "La tua azienda",
+        "business": "La tua attività",
+        "payment": "Setup di pagamento attuale",
+        "intent": "Obiettivi della sandbox"
+      },
+      "consent": "Inviando questo modulo, accetti che Aryze possa contattarti in merito alla tua richiesta di sandbox e alle informazioni di prodotto correlate.",
+      "back": "Indietro",
+      "continue": "Continua",
+      "submit": "Invia richiesta",
+      "submitting": "Invio in corso...",
+      "fields": {
+        "workEmail": "Email di lavoro",
+        "workEmailPlaceholder": "nome@azienda.com",
+        "fullName": "Nome completo",
+        "fullNamePlaceholder": "Il tuo nome completo",
+        "companyName": "Nome dell'azienda",
+        "companyNamePlaceholder": "Azienda Srl",
+        "companyWebsite": "Sito web aziendale",
+        "companyWebsitePlaceholder": "https://azienda.com",
+        "role": "Il tuo ruolo",
+        "rolePlaceholder": "Seleziona il ruolo",
+        "market": "Dove opera la tua attività?",
+        "marketPlaceholder": "Seleziona il mercato",
+        "businessType": "Che tipo di attività hai?",
+        "businessTypePlaceholder": "Seleziona il tipo di attività",
+        "paymentFlow": "Quale flusso di pagamento vuoi migliorare o testare?",
+        "paymentFlowPlaceholder": "Seleziona il flusso di pagamento",
+        "paymentMethods": "Quali metodi di pagamento usi oggi?",
+        "monthlyVolume": "Qual è il tuo volume mensile stimato di transazioni?",
+        "monthlyVolumePlaceholder": "Seleziona il volume",
+        "averageSize": "Qual è l'importo medio delle transazioni?",
+        "averageSizePlaceholder": "Seleziona l'importo medio",
+        "paymentChallenges": "Quali sono le tue principali sfide di pagamento oggi?",
+        "sandboxTests": "Cosa vuoi testare nella sandbox?",
+        "technicalTeam": "Hai un team tecnico pronto a testare?",
+        "technicalTeamPlaceholder": "Seleziona la disponibilità",
+        "testingStart": "Quando vorresti iniziare i test?",
+        "testingStartPlaceholder": "Seleziona la tempistica",
+        "additionalContext": "C'è altro che dovremmo sapere?",
+        "additionalContextPlaceholder": "Raccontaci il tuo flusso di pagamento, il setup attuale o cosa vuoi testare.",
+        "notSure": "Non saprei"
+      },
+      "errors": {
+        "workEmailRequired": "L'email di lavoro è obbligatoria.",
+        "workEmailInvalid": "Inserisci un'email di lavoro valida.",
+        "fullNameRequired": "Il nome completo è obbligatorio.",
+        "companyNameRequired": "Il nome dell'azienda è obbligatorio.",
+        "companyWebsiteRequired": "Il sito web aziendale è obbligatorio.",
+        "companyWebsiteInvalid": "Inserisci un sito web aziendale valido.",
+        "roleRequired": "Il ruolo è obbligatorio.",
+        "marketRequired": "Seleziona un mercato.",
+        "businessTypeRequired": "Il tipo di attività è obbligatorio.",
+        "paymentFlowRequired": "Il flusso di pagamento è obbligatorio.",
+        "selectAtLeastOne": "Seleziona almeno un'opzione.",
+        "monthlyVolumeRequired": "Il volume mensile di transazioni è obbligatorio.",
+        "technicalTeamRequired": "La disponibilità del team tecnico è obbligatoria.",
+        "testingStartRequired": "La tempistica di test è obbligatoria."
+      },
+      "options": {
+        "roles": {
+          "founder": "Founder / CEO",
+          "cfo": "CFO / Responsabile finanza",
+          "headPayments": "Head of Payments",
+          "paymentsManager": "Payments Manager",
+          "productLead": "Product Lead",
+          "opsLead": "Operations Lead",
+          "riskLead": "Responsabile rischio / frodi",
+          "cto": "CTO / Responsabile engineering",
+          "developer": "Sviluppatore / Lead tecnico",
+          "other": "Altro"
+        },
+        "markets": {
+          "uk": "Regno Unito",
+          "denmark": "Danimarca",
+          "eu": "Unione Europea",
+          "global": "Globale",
+          "other": "Altro"
+        },
+        "businessTypes": {
+          "gaming": "Gaming",
+          "betting": "Scommesse",
+          "trading": "Trading",
+          "highRisk": "Merchant ad alto rischio",
+          "ecommerce": "E-commerce",
+          "wallet": "Wallet",
+          "remittance": "Rimesse",
+          "marketplace": "Marketplace",
+          "financialServices": "Servizi finanziari",
+          "other": "Altra attività orientata ai pagamenti"
+        },
+        "paymentFlows": {
+          "checkout": "Pagamenti al checkout",
+          "deposits": "Depositi",
+          "topups": "Ricariche",
+          "funding": "Accrediti dei clienti",
+          "highValue": "Pagamenti di importo elevato",
+          "recurring": "Pagamenti ricorrenti",
+          "refunds": "Rimborsi",
+          "notSure": "Non saprei ancora"
+        },
+        "paymentMethods": {
+          "cards": "Carte",
+          "bankTransfer": "Bonifico bancario",
+          "openBanking": "Open banking",
+          "wallets": "Wallet",
+          "crypto": "Cripto / stablecoin",
+          "local": "Metodi di pagamento locali",
+          "other": "Altro"
+        },
+        "monthlyVolumes": {
+          "under1k": "Meno di 1.000 transazioni",
+          "1to10k": "Da 1.000 a 10.000 transazioni",
+          "10to100k": "Da 10.000 a 100.000 transazioni",
+          "100kPlus": "Oltre 100.000 transazioni",
+          "notSure": "Non saprei"
+        },
+        "paymentChallenges": {
+          "highFees": "Le commissioni delle carte sono troppo alte",
+          "slowSettlement": "Il regolamento è troppo lento",
+          "chargebacks": "Chargeback o controversie creano problemi",
+          "refunds": "I rimborsi sono difficili da gestire",
+          "reconciliation": "La riconciliazione richiede troppo lavoro manuale",
+          "visibility": "La visibilità sullo stato dei pagamenti è scarsa",
+          "acceptance": "L'accettazione delle carte è inaffidabile",
+          "alternative": "Vogliamo un'alternativa migliore ai rail delle carte",
+          "other": "Altro"
+        },
+        "sandboxTests": {
+          "initiation": "Avvio del pagamento",
+          "authorisation": "Flusso di autorizzazione bancaria del cliente",
+          "checkout": "Flusso di pagamento al checkout",
+          "deposit": "Flusso di deposito o ricarica",
+          "callbacks": "Callback sullo stato del pagamento",
+          "refunds": "Gestione dei rimborsi",
+          "reporting": "Reportistica e riconciliazione",
+          "dashboard": "Dashboard merchant",
+          "api": "Integrazione API",
+          "notSure": "Non saprei ancora"
+        },
+        "techReadiness": {
+          "now": "Sì, possiamo testare subito",
+          "notImmediately": "Sì, ma non immediatamente",
+          "commercialFirst": "No, prima ci serve una valutazione commerciale",
+          "notSure": "Non saprei"
+        },
+        "timelines": {
+          "asap": "Il prima possibile",
+          "2weeks": "Entro 2 settimane",
+          "1month": "Entro 1 mese",
+          "thisQuarter": "Più avanti in questo trimestre",
+          "notSure": "Non saprei ancora"
+        },
+        "bands": {
+          "uk": {
+            "b1": "Meno di £25",
+            "b2": "Da £25 a £100",
+            "b3": "Da £100 a £500",
+            "b4": "Da £500 a £2.500",
+            "b5": "£2.500+"
+          },
+          "denmark": {
+            "b1": "Meno di 200 DKK",
+            "b2": "Da 200 a 750 DKK",
+            "b3": "Da 750 a 3.750 DKK",
+            "b4": "Da 3.750 a 18.500 DKK",
+            "b5": "18.500 DKK+"
+          },
+          "eu": {
+            "b1": "Meno di €25",
+            "b2": "Da €25 a €100",
+            "b3": "Da €100 a €500",
+            "b4": "Da €500 a €2.500",
+            "b5": "€2.500+"
+          },
+          "global": {
+            "b1": "Meno di $25",
+            "b2": "Da $25 a $100",
+            "b3": "Da $100 a $500",
+            "b4": "Da $500 a $2.500",
+            "b5": "$2.500+"
+          }
+        }
+      }
+    },
+    "success": {
+      "resendEyebrow": "Richiesta ricevuta",
+      "mailtoEyebrow": "Richiesta pronta",
+      "resendTitle": "Grazie — ti contatteremo a breve.",
+      "mailtoTitle": "La tua email di richiesta sandbox è pronta.",
+      "resendBody": "La tua richiesta di sandbox è stata inviata al team di Aryze. Aspettati una risposta entro un giorno lavorativo con i prossimi passi.",
+      "mailtoBody": "La tua app di posta dovrebbe aprirsi con la richiesta di sandbox indirizzata ad Aryze. Invia l'email per condividere la tua azienda, il caso d'uso di pagamento e il setup tecnico.",
+      "back": "Torna a Pay by Bank"
+    }
+  }
+}

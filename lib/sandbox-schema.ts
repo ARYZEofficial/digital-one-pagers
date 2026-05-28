@@ -1,64 +1,98 @@
 import { z } from "zod";
 import { SANDBOX_MARKETS } from "./transaction-bands";
 
-const trimmed = (min: number, label: string) =>
-  z
+export type SandboxErrorMessages = {
+  workEmailRequired: string;
+  workEmailInvalid: string;
+  fullNameRequired: string;
+  companyNameRequired: string;
+  companyWebsiteRequired: string;
+  companyWebsiteInvalid: string;
+  roleRequired: string;
+  marketRequired: string;
+  businessTypeRequired: string;
+  paymentFlowRequired: string;
+  selectAtLeastOne: string;
+  monthlyVolumeRequired: string;
+  technicalTeamRequired: string;
+  testingStartRequired: string;
+};
+
+const defaultMessages: SandboxErrorMessages = {
+  workEmailRequired: "Work email is required.",
+  workEmailInvalid: "Enter a valid work email.",
+  fullNameRequired: "Full name is required.",
+  companyNameRequired: "Company name is required.",
+  companyWebsiteRequired: "Company website is required.",
+  companyWebsiteInvalid: "Enter a valid company website.",
+  roleRequired: "Role is required.",
+  marketRequired: "Select a market.",
+  businessTypeRequired: "Business type is required.",
+  paymentFlowRequired: "Payment flow is required.",
+  selectAtLeastOne: "Select at least one option.",
+  monthlyVolumeRequired: "Monthly transaction volume is required.",
+  technicalTeamRequired: "Technical team readiness is required.",
+  testingStartRequired: "Testing timeline is required.",
+};
+
+export function buildSandboxSchema(m: SandboxErrorMessages = defaultMessages) {
+  const urlSchema = z
     .string()
     .trim()
-    .min(min, { message: `${label} is required.` });
+    .min(1, { message: m.companyWebsiteRequired })
+    .transform((v) => (/^[a-z][a-z\d+\-.]*:\/\//i.test(v) ? v : `https://${v}`))
+    .refine(
+      (v) => {
+        try {
+          const u = new URL(v);
+          return Boolean(u.hostname.includes("."));
+        } catch {
+          return false;
+        }
+      },
+      { message: m.companyWebsiteInvalid },
+    );
 
-const urlSchema = z
-  .string()
-  .trim()
-  .min(1, { message: "Company website is required." })
-  .transform((v) => (/^[a-z][a-z\d+\-.]*:\/\//i.test(v) ? v : `https://${v}`))
-  .refine(
-    (v) => {
-      try {
-        const u = new URL(v);
-        return Boolean(u.hostname.includes("."));
-      } catch {
-        return false;
-      }
-    },
-    { message: "Enter a valid company website." },
-  );
+  return z.object({
+    // Step 1
+    workEmail: z
+      .string()
+      .trim()
+      .min(1, m.workEmailRequired)
+      .email(m.workEmailInvalid),
+    fullName: z.string().trim().min(1, { message: m.fullNameRequired }),
+    companyName: z.string().trim().min(1, { message: m.companyNameRequired }),
+    companyWebsite: urlSchema,
+    role: z.string().trim().min(1, { message: m.roleRequired }),
 
-export const sandboxSchema = z.object({
-  // Step 1
-  workEmail: z
-    .string()
-    .trim()
-    .min(1, "Work email is required.")
-    .email("Enter a valid work email."),
-  fullName: trimmed(1, "Full name"),
-  companyName: trimmed(1, "Company name"),
-  companyWebsite: urlSchema,
-  role: trimmed(1, "Role"),
+    // Step 2
+    market: z.enum(SANDBOX_MARKETS, {
+      errorMap: () => ({ message: m.marketRequired }),
+    }),
+    businessType: z.string().trim().min(1, { message: m.businessTypeRequired }),
+    paymentFlow: z.string().trim().min(1, { message: m.paymentFlowRequired }),
 
-  // Step 2
-  market: z.enum(SANDBOX_MARKETS, {
-    errorMap: () => ({ message: "Select a market." }),
-  }),
-  businessType: trimmed(1, "Business type"),
-  paymentFlow: trimmed(1, "Payment flow"),
+    // Step 3
+    paymentMethods: z.array(z.string()).min(1, m.selectAtLeastOne),
+    monthlyVolume: z
+      .string()
+      .trim()
+      .min(1, { message: m.monthlyVolumeRequired }),
+    averageTransactionSize: z.string().optional().default(""),
+    paymentChallenges: z.array(z.string()).min(1, m.selectAtLeastOne),
 
-  // Step 3
-  paymentMethods: z
-    .array(z.string())
-    .min(1, "Select at least one option."),
-  monthlyVolume: trimmed(1, "Monthly transaction volume"),
-  averageTransactionSize: z.string().optional().default(""),
-  paymentChallenges: z
-    .array(z.string())
-    .min(1, "Select at least one option."),
+    // Step 4
+    sandboxTests: z.array(z.string()).min(1, m.selectAtLeastOne),
+    technicalTeam: z
+      .string()
+      .trim()
+      .min(1, { message: m.technicalTeamRequired }),
+    testingStart: z.string().trim().min(1, { message: m.testingStartRequired }),
+    additionalContext: z.string().optional().default(""),
+  });
+}
 
-  // Step 4
-  sandboxTests: z.array(z.string()).min(1, "Select at least one option."),
-  technicalTeam: trimmed(1, "Technical team readiness"),
-  testingStart: trimmed(1, "Testing timeline"),
-  additionalContext: z.string().optional().default(""),
-});
+export const sandboxSchema = buildSandboxSchema();
 
 export type SandboxFormValues = z.infer<typeof sandboxSchema>;
 
@@ -68,13 +102,6 @@ export const sandboxStepFields: ReadonlyArray<readonly (keyof SandboxFormValues)
   ["paymentMethods", "monthlyVolume", "averageTransactionSize", "paymentChallenges"],
   ["sandboxTests", "technicalTeam", "testingStart", "additionalContext"],
 ];
-
-export const sandboxStepTitles = [
-  "Your company",
-  "Your business",
-  "Current payment setup",
-  "Sandbox intent",
-] as const;
 
 export const fieldLabels: Record<keyof SandboxFormValues, string> = {
   workEmail: "Work email",

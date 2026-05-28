@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useTranslations } from "next-intl";
 import {
   averageTransactionValueOptions,
   computeSavings,
@@ -14,6 +15,8 @@ import { cn } from "@/lib/cn";
 const currencies: Currency[] = ["EUR", "GBP", "USD", "DKK"];
 
 export function Calculator() {
+  const t = useTranslations("payByBank.calculator");
+  const c = useTranslations("common");
   const [monthlyTransactions, setMonthlyTransactions] = useState(750_000);
   const [averageTransactionValue, setAverageTransactionValue] = useState(50);
   // Stored as a string so users can fully clear the field; parsed for math.
@@ -50,16 +53,13 @@ export function Calculator() {
         className="absolute left-8 top-0 h-1 w-[210px] rounded-full bg-green"
       />
       <div className="mb-6 max-w-[720px]">
-        <p className="section-label text-quiet">Savings calculator</p>
-        <h2 className="mt-2 display-2 text-ink max-w-[14ch]">
-          Estimate your savings.
-        </h2>
+        <p className="section-label text-quiet">{t("eyebrow")}</p>
+        <h2 className="mt-2 display-2 text-ink max-w-[14ch]">{t("title")}</h2>
         <p className="mt-3 max-w-[40rem] text-base leading-relaxed text-muted">
-          See what fixed pricing could mean for your business.
+          {t("body")}
         </p>
         <p className="mt-3 max-w-[58ch] text-xs leading-snug text-quiet">
-          Indicative estimate only. Actual pricing depends on transaction
-          volume, payment flow, and commercial setup.
+          {t("disclaimer")}
         </p>
       </div>
 
@@ -68,7 +68,7 @@ export function Calculator() {
           className="grid h-fit gap-2.5 rounded-xl border border-[rgba(18,20,23,0.08)] bg-white/72 p-3.5"
           onSubmit={(e) => e.preventDefault()}
         >
-          <Field label="Monthly transactions">
+          <Field label={t("fields.monthlyTransactions")}>
             <select
               value={monthlyTransactions}
               onChange={(e) => setMonthlyTransactions(Number(e.target.value))}
@@ -76,12 +76,12 @@ export function Calculator() {
             >
               {monthlyTransactionOptions.map((o) => (
                 <option key={o.value} value={o.value}>
-                  {o.label}
+                  {t(`transactionOptions.${o.key}`)}
                 </option>
               ))}
             </select>
           </Field>
-          <Field label="Average payment amount">
+          <Field label={t("fields.averagePayment")}>
             <select
               value={averageTransactionValue}
               onChange={(e) =>
@@ -91,17 +91,17 @@ export function Calculator() {
             >
               {averageTransactionValueOptions.map((o) => (
                 <option key={o.value} value={o.value}>
-                  {o.label}
+                  {t(`averageOptions.${o.key}`)}
                 </option>
               ))}
             </select>
           </Field>
-          <Field label="Current card fee %">
+          <Field label={t("fields.cardFee")}>
             <input
               type="text"
               inputMode="decimal"
               pattern="[0-9]*[.,]?[0-9]*"
-              placeholder="e.g. 1.5"
+              placeholder={t("fields.cardFeePlaceholder")}
               value={cardFeeInput}
               onChange={(e) => {
                 // Allow only digits + a single decimal separator (".", ",").
@@ -109,18 +109,18 @@ export function Calculator() {
                 setCardFeeInput(cleaned);
               }}
               className={fieldInput}
-              aria-label="Current card fee percent"
+              aria-label={t("fields.cardFeeAria")}
             />
           </Field>
-          <Field label="Currency">
+          <Field label={t("fields.currency")}>
             <select
               value={currency}
               onChange={(e) => setCurrency(e.target.value as Currency)}
               className={fieldInput}
             >
-              {currencies.map((c) => (
-                <option key={c} value={c}>
-                  {c}
+              {currencies.map((cc) => (
+                <option key={cc} value={cc}>
+                  {cc}
                 </option>
               ))}
             </select>
@@ -146,17 +146,21 @@ export function Calculator() {
               }}
             />
             <div className="relative">
-              <p className="section-label text-white/68">Potential saving</p>
+              <p className="section-label text-white/68">
+                {t("result.potentialSaving")}
+              </p>
               <p className="mt-2 text-base text-white/68">
-                Estimated{" "}
-                <strong className="inline-block rounded-full bg-white/18 px-2 py-px font-extrabold">
-                  monthly
-                </strong>{" "}
-                savings
+                {t.rich("result.estimatedMonthly", {
+                  b: (chunks) => (
+                    <strong className="inline-block rounded-full bg-white/18 px-2 py-px font-extrabold">
+                      {chunks}
+                    </strong>
+                  ),
+                })}
               </p>
               {result.isNegative ? (
                 <p className="mt-3 text-[1.85rem] font-bold leading-tight text-[#ffd8d4] [text-shadow:0_10px_28px_rgba(0,0,0,0.18)] sm:text-[2.15rem]">
-                  No estimated saving
+                  {t("result.noSaving")}
                 </p>
               ) : (
                 <p className="mt-3 text-[2rem] font-bold leading-tight text-white [text-shadow:0_10px_28px_rgba(0,0,0,0.18)] sm:text-[2.45rem]">
@@ -173,28 +177,28 @@ export function Calculator() {
                 )}
               >
                 {result.isNegative
-                  ? "Current card pricing may be cheaper at this payment amount."
-                  : "Based on your current card fee compared with indicative Aryze fixed transaction pricing."}
+                  ? t("result.negativeNote")
+                  : t("result.savingNote")}
               </p>
             </div>
           </article>
 
           <div className="grid gap-2.5 sm:grid-cols-2">
-            <ResultCard label="Monthly payment volume">
+            <ResultCard label={t("result.monthlyVolume")}>
               <AnimatedNumber value={result.monthlyVolume} format={cur} />
             </ResultCard>
-            <ResultCard label="Current card cost" tone="red">
+            <ResultCard label={t("result.currentCardCost")} tone="red">
               <AnimatedNumber value={result.currentCardCost} format={cur} />
             </ResultCard>
-            <ResultCard label="Estimated yearly savings" tone="green">
+            <ResultCard label={t("result.yearlySavings")} tone="green">
               {result.isNegative ? (
-                "No estimated saving"
+                t("result.noSaving")
               ) : (
                 <AnimatedNumber value={result.yearlySavings} format={cur} />
               )}
             </ResultCard>
-            <ResultCard label="Aryze fixed price" tone="blue">
-              {`${unit(result.unitPrice)} / tx`}
+            <ResultCard label={t("result.fixedPrice")} tone="blue">
+              {t("result.perTx", { price: unit(result.unitPrice) })}
             </ResultCard>
           </div>
         </div>
@@ -208,14 +212,14 @@ export function Calculator() {
               className="flex-1 min-w-[220px]"
               withArrow
             >
-              Talk to us
+              {c("talkToUs")}
             </Button>
             <Button
               href="/sandbox-access"
               variant="mint"
               className="flex-1 min-w-[220px]"
             >
-              Request sandbox
+              {c("requestSandbox")}
             </Button>
           </div>
         </div>
