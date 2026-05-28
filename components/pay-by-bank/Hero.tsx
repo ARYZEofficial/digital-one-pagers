@@ -1,9 +1,13 @@
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
 import { MastercardMark } from "@/components/ui/MastercardMark";
 import { MetricPill } from "@/components/ui/MetricPill";
 import { RevealGroup, RevealItem } from "@/components/ui/Reveal";
 
 export function PayByBankHero() {
+  const t = useTranslations("payByBank.hero");
+  const c = useTranslations("common");
+
   return (
     <section className="relative overflow-hidden rounded-2xl border border-[rgba(25,34,53,0.12)] bg-gradient-to-br from-white/96 to-[rgba(240,247,255,0.92)] p-8 shadow-[var(--shadow-brand-strong)] sm:p-12 lg:p-14">
       <div
@@ -27,32 +31,28 @@ export function PayByBankHero() {
       <div className="relative grid items-end gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
         <RevealGroup className="grid gap-5">
           <RevealItem>
-            <p className="section-label">Pay by Bank</p>
+            <p className="section-label">{t("eyebrow")}</p>
           </RevealItem>
           <RevealItem>
-            <h1 className="display-1 max-w-[20ch] text-ink">
-              Stop letting card fees scale with your growth.
-            </h1>
+            <h1 className="display-1 max-w-[20ch] text-ink">{t("title")}</h1>
           </RevealItem>
           <RevealItem>
             <p className="max-w-[60ch] text-base leading-relaxed text-muted sm:text-lg">
-              For casinos, iGaming, and high-volume merchants that need
-              predictable pricing, fewer disputes, and faster deposits via
-              Mastercard Payment Rails.
+              {t("body")}
               <MastercardMark inline className="ml-1.5" />
             </p>
           </RevealItem>
           <RevealItem>
             <div className="mt-2 flex flex-wrap gap-3">
               <Button href="#calculator" variant="solid" pulse withArrow>
-                Calculate savings
+                {t("ctaPrimary")}
               </Button>
               <Button
                 href="https://cal.com/rabiiahmadesteitie/lets-connect"
                 variant="ghost"
                 external
               >
-                Talk to us
+                {c("talkToUs")}
               </Button>
             </div>
           </RevealItem>
@@ -60,12 +60,12 @@ export function PayByBankHero() {
 
         <RevealItem className="lg:justify-self-end">
           <MetricPill
-            label="Best fit"
-            value="Casinos, iGaming, betting, and high-volume deposit flows."
+            label={t("metricLabel")}
+            value={t("metricValue")}
             bullets={[
-              "Fixed flat fees",
-              "Near-zero chargebacks",
-              "Mastercard Open Banking rails",
+              t("metricBullets.fixedFees"),
+              t("metricBullets.chargebacks"),
+              t("metricBullets.rails"),
             ]}
           />
         </RevealItem>

@@ -4,128 +4,146 @@ import { type ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import { useForm, type Path, type UseFormReturn } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion, AnimatePresence } from "motion/react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import {
   buildEmailBody,
   buildEmailSubject,
+  buildSandboxSchema,
+  type SandboxErrorMessages,
   type SandboxFormValues,
-  sandboxSchema,
   sandboxStepFields,
-  sandboxStepTitles,
 } from "@/lib/sandbox-schema";
 import { type SandboxMarket, bandsForMarket } from "@/lib/transaction-bands";
 import { cn } from "@/lib/cn";
 
 const RECIPIENT = "rae@aryze.io";
 
+// Canonical English values are submitted and emailed to the Aryze team; the
+// `key` selects the translated label shown to the user.
 const ROLES = [
-  "Founder / CEO",
-  "CFO / Finance Lead",
-  "Head of Payments",
-  "Payments Manager",
-  "Product Lead",
-  "Operations Lead",
-  "Risk / Fraud Lead",
-  "CTO / Engineering Lead",
-  "Developer / Technical Lead",
-  "Other",
+  ["Founder / CEO", "founder"],
+  ["CFO / Finance Lead", "cfo"],
+  ["Head of Payments", "headPayments"],
+  ["Payments Manager", "paymentsManager"],
+  ["Product Lead", "productLead"],
+  ["Operations Lead", "opsLead"],
+  ["Risk / Fraud Lead", "riskLead"],
+  ["CTO / Engineering Lead", "cto"],
+  ["Developer / Technical Lead", "developer"],
+  ["Other", "other"],
 ] as const;
 
 const MARKETS = [
-  "United Kingdom",
-  "Denmark",
-  "European Union",
-  "Global",
-  "Other",
+  ["United Kingdom", "uk"],
+  ["Denmark", "denmark"],
+  ["European Union", "eu"],
+  ["Global", "global"],
+  ["Other", "other"],
 ] as const;
 
 const BUSINESS_TYPES = [
-  "Gaming",
-  "Betting",
-  "Trading",
-  "High-risk merchant",
-  "E-commerce",
-  "Wallet",
-  "Remittance",
-  "Marketplace",
-  "Financial services",
-  "Other payment-driven business",
+  ["Gaming", "gaming"],
+  ["Betting", "betting"],
+  ["Trading", "trading"],
+  ["High-risk merchant", "highRisk"],
+  ["E-commerce", "ecommerce"],
+  ["Wallet", "wallet"],
+  ["Remittance", "remittance"],
+  ["Marketplace", "marketplace"],
+  ["Financial services", "financialServices"],
+  ["Other payment-driven business", "other"],
 ] as const;
 
 const PAYMENT_FLOWS = [
-  "Checkout payments",
-  "Deposits",
-  "Top-ups",
-  "Customer funding",
-  "High-value payments",
-  "Recurring payments",
-  "Refunds",
-  "Not sure yet",
+  ["Checkout payments", "checkout"],
+  ["Deposits", "deposits"],
+  ["Top-ups", "topups"],
+  ["Customer funding", "funding"],
+  ["High-value payments", "highValue"],
+  ["Recurring payments", "recurring"],
+  ["Refunds", "refunds"],
+  ["Not sure yet", "notSure"],
 ] as const;
 
 const PAYMENT_METHODS = [
-  "Cards",
-  "Bank transfer",
-  "Open banking",
-  "Wallets",
-  "Crypto / stablecoins",
-  "Local payment methods",
-  "Other",
+  ["Cards", "cards"],
+  ["Bank transfer", "bankTransfer"],
+  ["Open banking", "openBanking"],
+  ["Wallets", "wallets"],
+  ["Crypto / stablecoins", "crypto"],
+  ["Local payment methods", "local"],
+  ["Other", "other"],
 ] as const;
 
 const MONTHLY_VOLUMES = [
-  "Under 1,000 transactions",
-  "1,000 to 10,000 transactions",
-  "10,000 to 100,000 transactions",
-  "100,000+ transactions",
-  "Not sure",
+  ["Under 1,000 transactions", "under1k"],
+  ["1,000 to 10,000 transactions", "1to10k"],
+  ["10,000 to 100,000 transactions", "10to100k"],
+  ["100,000+ transactions", "100kPlus"],
+  ["Not sure", "notSure"],
 ] as const;
 
 const PAYMENT_CHALLENGES = [
-  "Card fees are too high",
-  "Settlement is too slow",
-  "Chargebacks or disputes create problems",
-  "Refunds are hard to manage",
-  "Reconciliation takes too much manual work",
-  "Payment status visibility is weak",
-  "Card acceptance is unreliable",
-  "We want a better alternative to card rails",
-  "Other",
+  ["Card fees are too high", "highFees"],
+  ["Settlement is too slow", "slowSettlement"],
+  ["Chargebacks or disputes create problems", "chargebacks"],
+  ["Refunds are hard to manage", "refunds"],
+  ["Reconciliation takes too much manual work", "reconciliation"],
+  ["Payment status visibility is weak", "visibility"],
+  ["Card acceptance is unreliable", "acceptance"],
+  ["We want a better alternative to card rails", "alternative"],
+  ["Other", "other"],
 ] as const;
 
 const SANDBOX_TESTS = [
-  "Payment initiation",
-  "Customer bank authorisation flow",
-  "Checkout payment flow",
-  "Deposit or top-up flow",
-  "Payment status callbacks",
-  "Refund handling",
-  "Reporting and reconciliation",
-  "Merchant dashboard",
-  "API integration",
-  "Not sure yet",
+  ["Payment initiation", "initiation"],
+  ["Customer bank authorisation flow", "authorisation"],
+  ["Checkout payment flow", "checkout"],
+  ["Deposit or top-up flow", "deposit"],
+  ["Payment status callbacks", "callbacks"],
+  ["Refund handling", "refunds"],
+  ["Reporting and reconciliation", "reporting"],
+  ["Merchant dashboard", "dashboard"],
+  ["API integration", "api"],
+  ["Not sure yet", "notSure"],
 ] as const;
 
 const TECH_READINESS = [
-  "Yes, we can test now",
-  "Yes, but not immediately",
-  "No, we need commercial review first",
-  "Not sure",
+  ["Yes, we can test now", "now"],
+  ["Yes, but not immediately", "notImmediately"],
+  ["No, we need commercial review first", "commercialFirst"],
+  ["Not sure", "notSure"],
 ] as const;
 
 const TIMELINES = [
-  "As soon as possible",
-  "Within 2 weeks",
-  "Within 1 month",
-  "Later this quarter",
-  "Not sure yet",
+  ["As soon as possible", "asap"],
+  ["Within 2 weeks", "2weeks"],
+  ["Within 1 month", "1month"],
+  ["Later this quarter", "thisQuarter"],
+  ["Not sure yet", "notSure"],
 ] as const;
+
+const MARKET_BAND_KEY: Record<string, string> = {
+  "United Kingdom": "uk",
+  Denmark: "denmark",
+  "European Union": "eu",
+  Global: "global",
+  Other: "global",
+};
 
 const inputCls =
   "w-full min-h-[48px] rounded-lg border border-sand-line bg-white px-3 py-3 text-sm text-sand-deep transition-[border-color,box-shadow] duration-150 focus:outline-none focus:border-sand-teal focus:shadow-[0_0_0_4px_rgba(0,117,153,0.14)] placeholder:text-[#7a8992]";
-const errorInputCls =
-  "border-red shadow-[0_0_0_4px_rgba(220,38,38,0.08)]";
+const errorInputCls = "border-red shadow-[0_0_0_4px_rgba(220,38,38,0.08)]";
+
+const stepKeys = ["company", "business", "payment", "intent"] as const;
 
 export function SandboxForm() {
+  const t = useTranslations("sandbox.form");
+  const tf = useTranslations("sandbox.form.fields");
+  const to = useTranslations("sandbox.form.options");
+  const ts = useTranslations("sandbox.success");
+
   const [step, setStep] = useState(0);
   const [submitting, setSubmitting] = useState(false);
   const [submitState, setSubmitState] = useState<
@@ -135,8 +153,28 @@ export function SandboxForm() {
   >({ kind: "idle" });
   const successRef = useRef<HTMLDivElement>(null);
 
+  const schema = useMemo(() => {
+    const m: SandboxErrorMessages = {
+      workEmailRequired: t("errors.workEmailRequired"),
+      workEmailInvalid: t("errors.workEmailInvalid"),
+      fullNameRequired: t("errors.fullNameRequired"),
+      companyNameRequired: t("errors.companyNameRequired"),
+      companyWebsiteRequired: t("errors.companyWebsiteRequired"),
+      companyWebsiteInvalid: t("errors.companyWebsiteInvalid"),
+      roleRequired: t("errors.roleRequired"),
+      marketRequired: t("errors.marketRequired"),
+      businessTypeRequired: t("errors.businessTypeRequired"),
+      paymentFlowRequired: t("errors.paymentFlowRequired"),
+      selectAtLeastOne: t("errors.selectAtLeastOne"),
+      monthlyVolumeRequired: t("errors.monthlyVolumeRequired"),
+      technicalTeamRequired: t("errors.technicalTeamRequired"),
+      testingStartRequired: t("errors.testingStartRequired"),
+    };
+    return buildSandboxSchema(m);
+  }, [t]);
+
   const form = useForm<SandboxFormValues>({
-    resolver: zodResolver(sandboxSchema),
+    resolver: zodResolver(schema),
     mode: "onTouched",
     defaultValues: {
       workEmail: "",
@@ -163,11 +201,14 @@ export function SandboxForm() {
     () => bandsForMarket(market ?? ""),
     [market],
   );
+  const bandKey = MARKET_BAND_KEY[market ?? "United Kingdom"] ?? "uk";
 
   const totalSteps = sandboxStepFields.length;
 
   async function onNext() {
-    const fieldsToValidate = sandboxStepFields[step] as Array<Path<SandboxFormValues>>;
+    const fieldsToValidate = sandboxStepFields[step] as Array<
+      Path<SandboxFormValues>
+    >;
     const ok = await form.trigger(fieldsToValidate, { shouldFocus: true });
     if (!ok) return;
     setStep((s) => Math.min(totalSteps - 1, s + 1));
@@ -210,7 +251,9 @@ export function SandboxForm() {
   }, [submitState]);
 
   if (submitState.kind === "success") {
-    return <SuccessPanel innerRef={successRef} via={submitState.via} />;
+    return (
+      <SuccessPanel innerRef={successRef} via={submitState.via} ts={ts} />
+    );
   }
 
   return (
@@ -219,10 +262,10 @@ export function SandboxForm() {
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <p className="text-sm font-bold text-[#5a6a74]">
-              Step {step + 1} of {totalSteps}
+              {t("stepProgress", { current: step + 1, total: totalSteps })}
             </p>
             <h2 className="mt-1 display-3 text-sand-deep">
-              {sandboxStepTitles[step]}
+              {t(`stepTitles.${stepKeys[step]}`)}
             </h2>
           </div>
         </div>
@@ -253,19 +296,24 @@ export function SandboxForm() {
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="m-0 grid min-w-0 border-0 p-0"
           >
-            {step === 0 && <Step1 form={form} />}
-            {step === 1 && <Step2 form={form} />}
+            {step === 0 && <Step1 form={form} tf={tf} to={to} />}
+            {step === 1 && <Step2 form={form} tf={tf} to={to} />}
             {step === 2 && (
-              <Step3 form={form} transactionBands={transactionBands} />
+              <Step3
+                form={form}
+                tf={tf}
+                to={to}
+                transactionBands={transactionBands}
+                bandKey={bandKey}
+              />
             )}
-            {step === 3 && <Step4 form={form} />}
+            {step === 3 && <Step4 form={form} tf={tf} to={to} />}
           </motion.fieldset>
         </AnimatePresence>
 
         {step === totalSteps - 1 ? (
           <p className="mt-6 border-t border-[#e3e8eb] pt-4 text-sm leading-relaxed text-[#5a6a74]">
-            By submitting this form, you agree that Aryze may contact you about
-            your sandbox request and related product information.
+            {t("consent")}
           </p>
         ) : null}
 
@@ -282,7 +330,7 @@ export function SandboxForm() {
               onClick={onBack}
               className="inline-flex min-h-[46px] items-center justify-center rounded-lg border border-sand-line bg-white px-4 py-3 text-sm font-semibold text-sand-deep transition-[border-color,box-shadow,transform] hover:border-sand-deep hover:-translate-y-px hover:shadow-[0_14px_30px_rgba(0,30,43,0.08)]"
             >
-              Back
+              {t("back")}
             </button>
           ) : (
             <span aria-hidden />
@@ -293,7 +341,7 @@ export function SandboxForm() {
               onClick={onNext}
               className="inline-flex min-h-[46px] items-center justify-center rounded-lg bg-sand-teal px-4 py-3 text-sm font-semibold text-white transition-[transform,box-shadow] hover:-translate-y-px hover:shadow-[0_18px_38px_rgba(0,117,153,0.28)]"
             >
-              Continue
+              {t("continue")}
             </button>
           ) : (
             <button
@@ -301,7 +349,7 @@ export function SandboxForm() {
               disabled={submitting}
               className="inline-flex min-h-[46px] items-center justify-center rounded-lg border border-mint-line bg-mint px-5 py-3 text-sm font-semibold text-sand-deep transition-[transform,box-shadow] hover:-translate-y-px hover:shadow-[0_18px_38px_rgba(17,132,91,0.22)] disabled:cursor-not-allowed disabled:opacity-60"
             >
-              {submitting ? "Submitting..." : "Submit request"}
+              {submitting ? t("submitting") : t("submit")}
             </button>
           )}
         </div>
@@ -310,59 +358,63 @@ export function SandboxForm() {
   );
 }
 
-function Step1({
-  form,
-}: {
+type StepProps = {
   form: UseFormReturn<SandboxFormValues>;
-}) {
+  tf: ReturnType<typeof useTranslations>;
+  to: ReturnType<typeof useTranslations>;
+};
+
+function Step1({ form, tf, to }: StepProps) {
   const errs = form.formState.errors;
   return (
     <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-      <FieldText label="Work email" error={errs.workEmail}>
+      <FieldText label={tf("workEmail")} error={errs.workEmail}>
         <input
           type="email"
-          placeholder="name@company.com"
+          placeholder={tf("workEmailPlaceholder")}
           autoComplete="email"
           {...form.register("workEmail")}
           className={cn(inputCls, errs.workEmail && errorInputCls)}
         />
       </FieldText>
-      <FieldText label="Full name" error={errs.fullName}>
+      <FieldText label={tf("fullName")} error={errs.fullName}>
         <input
           type="text"
-          placeholder="Your full name"
+          placeholder={tf("fullNamePlaceholder")}
           autoComplete="name"
           {...form.register("fullName")}
           className={cn(inputCls, errs.fullName && errorInputCls)}
         />
       </FieldText>
-      <FieldText label="Company name" error={errs.companyName}>
+      <FieldText label={tf("companyName")} error={errs.companyName}>
         <input
           type="text"
-          placeholder="Company Ltd"
+          placeholder={tf("companyNamePlaceholder")}
           autoComplete="organization"
           {...form.register("companyName")}
           className={cn(inputCls, errs.companyName && errorInputCls)}
         />
       </FieldText>
-      <FieldText label="Company website" error={errs.companyWebsite}>
+      <FieldText label={tf("companyWebsite")} error={errs.companyWebsite}>
         <input
           type="text"
           inputMode="url"
-          placeholder="https://company.com"
+          placeholder={tf("companyWebsitePlaceholder")}
           autoComplete="url"
           {...form.register("companyWebsite")}
           className={cn(inputCls, errs.companyWebsite && errorInputCls)}
         />
       </FieldText>
-      <FieldText label="Your role" error={errs.role} wide>
+      <FieldText label={tf("role")} error={errs.role} wide>
         <select
           {...form.register("role")}
           className={cn(inputCls, errs.role && errorInputCls)}
         >
-          <option value="">Select role</option>
-          {ROLES.map((r) => (
-            <option key={r}>{r}</option>
+          <option value="">{tf("rolePlaceholder")}</option>
+          {ROLES.map(([value, key]) => (
+            <option key={key} value={value}>
+              {to(`roles.${key}`)}
+            </option>
           ))}
         </select>
       </FieldText>
@@ -370,48 +422,46 @@ function Step1({
   );
 }
 
-function Step2({
-  form,
-}: {
-  form: UseFormReturn<SandboxFormValues>;
-}) {
+function Step2({ form, tf, to }: StepProps) {
   const errs = form.formState.errors;
   return (
     <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-      <FieldText label="Where does your business operate?" error={errs.market}>
+      <FieldText label={tf("market")} error={errs.market}>
         <select
           {...form.register("market")}
           className={cn(inputCls, errs.market && errorInputCls)}
         >
-          <option value="">Select market</option>
-          {MARKETS.map((m) => (
-            <option key={m}>{m}</option>
+          <option value="">{tf("marketPlaceholder")}</option>
+          {MARKETS.map(([value, key]) => (
+            <option key={key} value={value}>
+              {to(`markets.${key}`)}
+            </option>
           ))}
         </select>
       </FieldText>
-      <FieldText label="What type of business are you?" error={errs.businessType}>
+      <FieldText label={tf("businessType")} error={errs.businessType}>
         <select
           {...form.register("businessType")}
           className={cn(inputCls, errs.businessType && errorInputCls)}
         >
-          <option value="">Select business type</option>
-          {BUSINESS_TYPES.map((b) => (
-            <option key={b}>{b}</option>
+          <option value="">{tf("businessTypePlaceholder")}</option>
+          {BUSINESS_TYPES.map(([value, key]) => (
+            <option key={key} value={value}>
+              {to(`businessTypes.${key}`)}
+            </option>
           ))}
         </select>
       </FieldText>
-      <FieldText
-        label="Which payment flow do you want to improve or test?"
-        error={errs.paymentFlow}
-        wide
-      >
+      <FieldText label={tf("paymentFlow")} error={errs.paymentFlow} wide>
         <select
           {...form.register("paymentFlow")}
           className={cn(inputCls, errs.paymentFlow && errorInputCls)}
         >
-          <option value="">Select payment flow</option>
-          {PAYMENT_FLOWS.map((p) => (
-            <option key={p}>{p}</option>
+          <option value="">{tf("paymentFlowPlaceholder")}</option>
+          {PAYMENT_FLOWS.map(([value, key]) => (
+            <option key={key} value={value}>
+              {to(`paymentFlows.${key}`)}
+            </option>
           ))}
         </select>
       </FieldText>
@@ -421,27 +471,30 @@ function Step2({
 
 function Step3({
   form,
+  tf,
+  to,
   transactionBands,
-}: {
-  form: UseFormReturn<SandboxFormValues>;
+  bandKey,
+}: StepProps & {
   transactionBands: readonly string[];
+  bandKey: string;
 }) {
   const errs = form.formState.errors;
   return (
     <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
       <CheckboxField
-        label="Which payment methods do you use today?"
+        label={tf("paymentMethods")}
         wide
         error={
           (errs.paymentMethods as { message?: string } | undefined)?.message
         }
       >
         <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
-          {PAYMENT_METHODS.map((m) => (
-            <CheckboxLabel key={m} label={m}>
+          {PAYMENT_METHODS.map(([value, key]) => (
+            <CheckboxLabel key={key} label={to(`paymentMethods.${key}`)}>
               <input
                 type="checkbox"
-                value={m}
+                value={value}
                 {...form.register("paymentMethods")}
                 className="mt-0.5 h-4 w-4 accent-sand-teal"
               />
@@ -449,42 +502,43 @@ function Step3({
           ))}
         </div>
       </CheckboxField>
-      <FieldText
-        label="What is your estimated monthly transaction volume?"
-        error={errs.monthlyVolume}
-      >
+      <FieldText label={tf("monthlyVolume")} error={errs.monthlyVolume}>
         <select
           {...form.register("monthlyVolume")}
           className={cn(inputCls, errs.monthlyVolume && errorInputCls)}
         >
-          <option value="">Select volume</option>
-          {MONTHLY_VOLUMES.map((m) => (
-            <option key={m}>{m}</option>
+          <option value="">{tf("monthlyVolumePlaceholder")}</option>
+          {MONTHLY_VOLUMES.map(([value, key]) => (
+            <option key={key} value={value}>
+              {to(`monthlyVolumes.${key}`)}
+            </option>
           ))}
         </select>
       </FieldText>
-      <FieldText label="What is your average transaction size?">
+      <FieldText label={tf("averageSize")}>
         <select {...form.register("averageTransactionSize")} className={inputCls}>
-          <option value="">Select average size</option>
-          {transactionBands.map((b) => (
-            <option key={b}>{b}</option>
+          <option value="">{tf("averageSizePlaceholder")}</option>
+          {transactionBands.map((value, i) => (
+            <option key={value} value={value}>
+              {to(`bands.${bandKey}.b${i + 1}`)}
+            </option>
           ))}
-          <option>Not sure</option>
+          <option value="Not sure">{tf("notSure")}</option>
         </select>
       </FieldText>
       <CheckboxField
-        label="What are your main payment challenges today?"
+        label={tf("paymentChallenges")}
         wide
         error={
           (errs.paymentChallenges as { message?: string } | undefined)?.message
         }
       >
         <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
-          {PAYMENT_CHALLENGES.map((c) => (
-            <CheckboxLabel key={c} label={c}>
+          {PAYMENT_CHALLENGES.map(([value, key]) => (
+            <CheckboxLabel key={key} label={to(`paymentChallenges.${key}`)}>
               <input
                 type="checkbox"
-                value={c}
+                value={value}
                 {...form.register("paymentChallenges")}
                 className="mt-0.5 h-4 w-4 accent-sand-teal"
               />
@@ -496,27 +550,21 @@ function Step3({
   );
 }
 
-function Step4({
-  form,
-}: {
-  form: UseFormReturn<SandboxFormValues>;
-}) {
+function Step4({ form, tf, to }: StepProps) {
   const errs = form.formState.errors;
   return (
     <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
       <CheckboxField
-        label="What do you want to test in the sandbox?"
+        label={tf("sandboxTests")}
         wide
-        error={
-          (errs.sandboxTests as { message?: string } | undefined)?.message
-        }
+        error={(errs.sandboxTests as { message?: string } | undefined)?.message}
       >
         <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
-          {SANDBOX_TESTS.map((t) => (
-            <CheckboxLabel key={t} label={t}>
+          {SANDBOX_TESTS.map(([value, key]) => (
+            <CheckboxLabel key={key} label={to(`sandboxTests.${key}`)}>
               <input
                 type="checkbox"
-                value={t}
+                value={value}
                 {...form.register("sandboxTests")}
                 className="mt-0.5 h-4 w-4 accent-sand-teal"
               />
@@ -524,38 +572,36 @@ function Step4({
           ))}
         </div>
       </CheckboxField>
-      <FieldText
-        label="Do you have a technical team ready to test?"
-        error={errs.technicalTeam}
-      >
+      <FieldText label={tf("technicalTeam")} error={errs.technicalTeam}>
         <select
           {...form.register("technicalTeam")}
           className={cn(inputCls, errs.technicalTeam && errorInputCls)}
         >
-          <option value="">Select readiness</option>
-          {TECH_READINESS.map((r) => (
-            <option key={r}>{r}</option>
+          <option value="">{tf("technicalTeamPlaceholder")}</option>
+          {TECH_READINESS.map(([value, key]) => (
+            <option key={key} value={value}>
+              {to(`techReadiness.${key}`)}
+            </option>
           ))}
         </select>
       </FieldText>
-      <FieldText
-        label="When would you like to start testing?"
-        error={errs.testingStart}
-      >
+      <FieldText label={tf("testingStart")} error={errs.testingStart}>
         <select
           {...form.register("testingStart")}
           className={cn(inputCls, errs.testingStart && errorInputCls)}
         >
-          <option value="">Select timeline</option>
-          {TIMELINES.map((t) => (
-            <option key={t}>{t}</option>
+          <option value="">{tf("testingStartPlaceholder")}</option>
+          {TIMELINES.map(([value, key]) => (
+            <option key={key} value={value}>
+              {to(`timelines.${key}`)}
+            </option>
           ))}
         </select>
       </FieldText>
-      <FieldText label="Anything else we should know?" wide>
+      <FieldText label={tf("additionalContext")} wide>
         <textarea
           rows={5}
-          placeholder="Tell us about your payment flow, current setup, or what you want to test."
+          placeholder={tf("additionalContextPlaceholder")}
           {...form.register("additionalContext")}
           className={cn(inputCls, "min-h-[126px] py-3 resize-y")}
         />
@@ -636,9 +682,11 @@ function CheckboxLabel({
 function SuccessPanel({
   via,
   innerRef,
+  ts,
 }: {
   via: "resend" | "mailto";
   innerRef?: React.Ref<HTMLDivElement>;
+  ts: ReturnType<typeof useTranslations>;
 }) {
   return (
     <div
@@ -647,24 +695,20 @@ function SuccessPanel({
       className="overflow-hidden rounded-2xl border border-sand-line bg-white p-9 shadow-[0_18px_48px_rgba(0,30,43,0.08)] sm:p-12"
     >
       <p className="section-label">
-        {via === "resend" ? "Request received" : "Request prepared"}
+        {via === "resend" ? ts("resendEyebrow") : ts("mailtoEyebrow")}
       </p>
       <h2 className="mt-3 display-2 text-sand-deep">
-        {via === "resend"
-          ? "Thank you — we'll be in touch."
-          : "Your sandbox request email is ready."}
+        {via === "resend" ? ts("resendTitle") : ts("mailtoTitle")}
       </h2>
       <p className="mt-3 max-w-[60ch] text-base leading-relaxed text-[#52636d]">
-        {via === "resend"
-          ? "Your sandbox request has been sent to the Aryze team. Expect a response within one business day with the next steps."
-          : "Your mail app should open with the sandbox request addressed to Aryze. Send the email to share your company, payment use case, and technical setup."}
+        {via === "resend" ? ts("resendBody") : ts("mailtoBody")}
       </p>
-      <a
+      <Link
         href="/pay-by-bank"
         className="mt-6 inline-flex min-h-[46px] items-center justify-center rounded-lg bg-sand-teal px-5 py-3 text-sm font-semibold text-white transition-[transform,box-shadow] hover:-translate-y-px hover:shadow-[0_18px_38px_rgba(0,117,153,0.28)]"
       >
-        Back to Pay by Bank
-      </a>
+        {ts("back")}
+      </Link>
     </div>
   );
 }

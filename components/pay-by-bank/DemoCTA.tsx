@@ -1,6 +1,10 @@
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
 
 export function DemoCTA() {
+  const t = useTranslations("payByBank.demoCta");
+  const c = useTranslations("common");
+
   return (
     <section
       id="demo"
@@ -17,12 +21,10 @@ export function DemoCTA() {
       />
       <div className="relative grid items-center gap-6 sm:grid-cols-[minmax(0,1fr)_auto]">
         <div className="max-w-[58ch]">
-          <p className="section-label text-white/72">Talk to us</p>
-          <h2 className="mt-3 display-2 text-white">
-            Ready to cut transaction costs?
-          </h2>
+          <p className="section-label text-white/72">{t("eyebrow")}</p>
+          <h2 className="mt-3 display-2 text-white">{t("title")}</h2>
           <p className="mt-3 max-w-[52ch] text-sm leading-relaxed text-white/72 sm:text-base">
-            Book a short call and we&rsquo;ll map your payment flow and potential fit.
+            {t("body")}
           </p>
         </div>
         <div className="grid gap-3 sm:justify-items-end">
@@ -32,10 +34,10 @@ export function DemoCTA() {
             withArrow
             external
           >
-            Talk to us
+            {c("talkToUs")}
           </Button>
           <Button href="/sandbox-access" variant="mint">
-            Request sandbox
+            {c("requestSandbox")}
           </Button>
         </div>
       </div>

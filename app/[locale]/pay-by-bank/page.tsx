@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { Footer } from "@/components/site/Footer";
 import { PayByBankHero } from "@/components/pay-by-bank/Hero";
@@ -9,16 +10,27 @@ import { AboutAryze } from "@/components/pay-by-bank/AboutAryze";
 import { DemoCTA } from "@/components/pay-by-bank/DemoCTA";
 import { Calculator } from "./calculator";
 
-export const metadata: Metadata = {
-  title: "Pay by Bank",
-  description:
-    "Pay by Bank helps UK merchants reduce card friction and understand potential payment savings.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "metadata.payByBank" });
+  return { title: t("title"), description: t("description") };
+}
 
-export default function PayByBankPage() {
+export default async function PayByBankPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <>
-      <SiteHeader back={{ href: "/", label: "Overview" }} />
+      <SiteHeader back={{ href: "/", labelKey: "overview" }} />
       <main className="mx-auto mt-7 grid w-[min(1180px,calc(100vw-32px))] gap-6">
         <PayByBankHero />
         <PaymentPain />

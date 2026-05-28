@@ -1,7 +1,10 @@
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
 import { RevealGroup, RevealItem } from "@/components/ui/Reveal";
 
 export function HomeHero() {
+  const t = useTranslations("home.hero");
+
   return (
     <section className="relative overflow-hidden rounded-2xl border border-[rgba(25,34,53,0.12)] bg-gradient-to-br from-white/96 to-[rgba(248,250,252,0.9)] p-8 shadow-[var(--shadow-brand)] sm:p-12 lg:p-14">
       {/* halo */}
@@ -26,27 +29,23 @@ export function HomeHero() {
       <div className="relative grid items-end gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
         <RevealGroup className="grid gap-5">
           <RevealItem>
-            <p className="section-label">About Aryze</p>
+            <p className="section-label">{t("eyebrow")}</p>
           </RevealItem>
           <RevealItem>
-            <h1 className="display-1 max-w-[18ch] text-ink">
-              Built in Copenhagen for better money movement.
-            </h1>
+            <h1 className="display-1 max-w-[18ch] text-ink">{t("title")}</h1>
           </RevealItem>
           <RevealItem>
             <p className="max-w-[60ch] text-base leading-relaxed text-muted sm:text-lg">
-              Aryze is a Danish fintech company founded in 2017. We build
-              payment products for operators that need clearer control, clearer
-              evidence, and payment flows that hold up in practice.
+              {t("body")}
             </p>
           </RevealItem>
           <RevealItem>
             <div className="mt-2 flex flex-wrap gap-3">
               <Button href="/pay-by-bank" variant="solid" pulse withArrow>
-                Start with Pay by Bank
+                {t("ctaPrimary")}
               </Button>
               <Button href="https://aryze.io" variant="ghost" external>
-                Visit aryze.io
+                {t("ctaSecondary")}
               </Button>
             </div>
           </RevealItem>
@@ -64,13 +63,12 @@ export function HomeHero() {
               }}
             />
             <div className="relative">
-              <p className="section-label text-white/64">Team</p>
+              <p className="section-label text-white/64">{t("teamEyebrow")}</p>
               <h2 className="mt-3 display-3 leading-tight text-white">
-                Designed for operators, not demos.
+                {t("teamTitle")}
               </h2>
               <p className="mt-3 text-sm leading-relaxed text-white/72">
-                The team behind Aryze cares about details, controls, and what
-                happens after launch.
+                {t("teamBody")}
               </p>
             </div>
           </div>

@@ -1,0 +1,488 @@
+{
+  "metadata": {
+    "default": {
+      "description": "Aryze 为需要更清晰的管控、更可靠的凭证以及在实际中可靠运行的支付流程的运营方打造支付产品。",
+      "ogDescription": "在哥本哈根打造，让资金流转更顺畅。Pay by Bank、Stablecoin Factory、Digital Cash。"
+    },
+    "payByBank": {
+      "title": "Pay by Bank",
+      "description": "Pay by Bank 帮助英国商户减少银行卡支付摩擦，并估算潜在的支付节省。"
+    },
+    "stablecoinFactory": {
+      "title": "Stablecoin Factory",
+      "description": "Stablecoin Factory 是 Aryze 即将推出的产品，用于更简单地部署稳定币。"
+    },
+    "digitalCash": {
+      "title": "Digital Cash",
+      "description": "Digital Cash 是 Aryze 即将推出的产品，面向运营数字货币的持牌机构。"
+    },
+    "sandboxAccess": {
+      "title": "沙盒访问",
+      "description": "申请 Aryze Pay by Bank 沙盒访问权限，分享您的公司、支付配置和测试目标。"
+    }
+  },
+  "common": {
+    "talkToUs": "联系我们",
+    "requestSandbox": "申请沙盒",
+    "backToOverview": "返回概览",
+    "comingSoon": "敬请期待",
+    "readMore": "了解更多",
+    "for": "适用对象",
+    "helpsWith": "可解决"
+  },
+  "header": {
+    "homeAriaLabel": "Aryze 首页",
+    "language": "语言"
+  },
+  "footer": {
+    "copyright": "© {year} Aryze。在哥本哈根打造。",
+    "overview": "概览",
+    "payByBank": "Pay by Bank",
+    "stablecoinFactory": "Stablecoin Factory",
+    "digitalCash": "Digital Cash"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "关于 Aryze",
+      "title": "在哥本哈根打造，让资金流转更顺畅。",
+      "body": "Aryze 是一家成立于 2017 年的丹麦金融科技公司。我们为需要更清晰的管控、更可靠的凭证以及在实际中可靠运行的支付流程的运营方打造支付产品。",
+      "ctaPrimary": "从 Pay by Bank 开始",
+      "ctaSecondary": "访问 aryze.io",
+      "teamEyebrow": "团队",
+      "teamTitle": "为运营方而设计，而非为演示而设计。",
+      "teamBody": "Aryze 背后的团队重视细节、管控，以及上线之后会发生的事。"
+    },
+    "about": {
+      "mission": {
+        "label": "使命",
+        "body": "打造让商户拥有更多管控、更清晰凭证、更少运营妥协的支付产品。"
+      },
+      "vision": {
+        "label": "愿景",
+        "body": "一个让商户能更快推进，同时不牺牲清晰度、管控与问责的支付环境。"
+      },
+      "values": {
+        "label": "价值观",
+        "body": "清晰的规则、以证据胜于叙述、以运营方为先的设计，以及在不失控的前提下扩展规模。"
+      }
+    },
+    "products": {
+      "eyebrow": "产品单页",
+      "title": "选择下一步去向。",
+      "payByBank": {
+        "eyebrow": "高交易量商户",
+        "tagline": "更好地收款。",
+        "body": "适用于以支付为核心的英国商户，当银行卡摩擦、结算或拒付影响业绩时。"
+      },
+      "stablecoinFactory": {
+        "eyebrow": "代币发行方",
+        "tagline": "更快上线。",
+        "body": "适用于已有清晰稳定币构想的开发者和技术团队。"
+      },
+      "digitalCash": {
+        "eyebrow": "持牌机构",
+        "tagline": "合规运营。",
+        "body": "适用于有数字货币运营需求的已持牌机构。"
+      }
+    },
+    "bottomCta": {
+      "eyebrow": "面向以支付为核心的商户",
+      "title": "看看固定定价能为您的业务带来什么。",
+      "body": "在 Pay by Bank 上运行节省计算器，然后预约通话，深入了解您的支付流程。",
+      "ctaPrimary": "打开 Pay by Bank"
+    }
+  },
+  "payByBank": {
+    "hero": {
+      "eyebrow": "Pay by Bank",
+      "title": "别再让银行卡费用随业务增长而膨胀。",
+      "body": "面向赌场、iGaming 和高交易量商户，他们需要可预测的定价、更少的争议，以及通过 Mastercard Payment Rails 实现更快的入金。",
+      "ctaPrimary": "计算节省",
+      "metricLabel": "最佳适配",
+      "metricValue": "赌场、iGaming、博彩以及高交易量的入金流程。",
+      "metricBullets": {
+        "fixedFees": "固定统一费率",
+        "chargebacks": "近乎零拒付",
+        "rails": "Mastercard Open Banking 通道"
+      }
+    },
+    "pain": {
+      "eyebrow": "支付痛点",
+      "title": "您的结账流程是否在增加成本？",
+      "body": "高交易量商户最先感受到的三项成本。",
+      "items": {
+        "fees": {
+          "title": "高额银行卡费用",
+          "body": "百分比成本随每笔入金不断增长。"
+        },
+        "chargebacks": {
+          "title": "拒付消耗时间",
+          "body": "争议消耗收入和运营精力。"
+        },
+        "abandon": {
+          "title": "玩家放弃入金",
+          "body": "填写卡信息在结账时增加摩擦。"
+        }
+      }
+    },
+    "value": {
+      "eyebrow": "带来的改变",
+      "title": "商户的收获。",
+      "body": "一种新的支付方式，无需重建您的结账流程。",
+      "items": {
+        "fixed": {
+          "title": "每笔交易固定费用",
+          "body": "每笔支付成本可预测。"
+        },
+        "chargebacks": {
+          "title": "近乎零拒付",
+          "body": "不可撤销的账户到账户(A2A)支付。"
+        },
+        "direct": {
+          "title": "直接银行支付",
+          "body": "玩家直接从其银行账户付款。"
+        },
+        "auth": {
+          "title": "安全身份验证",
+          "body": "银行级别的 SCA 强客户认证。"
+        },
+        "rails": {
+          "title": "Mastercard 通道",
+          "body": "专为大规模入金而打造。"
+        }
+      }
+    },
+    "onboarding": {
+      "eyebrow": "实施",
+      "title": "从支付流程到正式处理。",
+      "body": "我们梳理您的支付流程、完成 KYB、进行集成、测试并支持上线。",
+      "steps": {
+        "map": {
+          "title": "梳理支付流程",
+          "body": "了解您的入金流程、市场、交易量以及当前的支付摩擦。"
+        },
+        "kyb": {
+          "title": "完成 KYB",
+          "body": "收集公司信息、所需文件并完成审批。"
+        },
+        "integrate": {
+          "title": "集成与测试",
+          "body": "搭建支付流程、回调、报表并进行测试流程。"
+        },
+        "golive": {
+          "title": "正式上线",
+          "body": "在监控、支持和清晰交接下完成上线。"
+        }
+      }
+    },
+    "about": {
+      "eyebrow": "关于 Aryze",
+      "title": "为可预测的资金流转而打造。",
+      "body": "Aryze PSP 于 2017 年在丹麦成立，致力于打造实现可预测资金流转的支付基础设施。",
+      "points": {
+        "focus": {
+          "label": "专注",
+          "body": "银行支付与数字货币基础设施。"
+        },
+        "market": {
+          "label": "市场",
+          "body": "服务受监管的以及支付密集型的商户。"
+        },
+        "access": {
+          "label": "接入",
+          "body": "通过合作获得英国牌照。Mastercard Open Banking 通道。"
+        }
+      }
+    },
+    "demoCta": {
+      "eyebrow": "联系我们",
+      "title": "准备好降低交易成本了吗？",
+      "body": "预约一次简短通话，我们将梳理您的支付流程并评估潜在适配性。"
+    },
+    "calculator": {
+      "eyebrow": "节省计算器",
+      "title": "估算您的节省。",
+      "body": "看看固定定价能为您的业务带来什么。",
+      "disclaimer": "仅为指示性估算。实际定价取决于交易量、支付流程和商务方案。",
+      "fields": {
+        "monthlyTransactions": "每月交易量",
+        "averagePayment": "平均支付金额",
+        "cardFee": "当前银行卡费率 %",
+        "cardFeePlaceholder": "例如 1.5",
+        "cardFeeAria": "当前银行卡费率百分比",
+        "currency": "货币"
+      },
+      "transactionOptions": {
+        "under50k": "低于 50,000",
+        "50to100k": "50,000 – 100,000",
+        "100to250k": "100,000 – 250,000",
+        "250to500k": "250,000 – 500,000",
+        "500to1m": "500,000 – 100万",
+        "1to2_5m": "100万 – 250万",
+        "2_5to5m": "250万 – 500万",
+        "5mPlus": "500万+"
+      },
+      "averageOptions": {
+        "under20": "低于 20",
+        "20to35": "20 – 35",
+        "35to75": "35 – 75",
+        "75to150": "75 – 150",
+        "150plus": "150+"
+      },
+      "result": {
+        "potentialSaving": "潜在节省",
+        "estimatedMonthly": "预计<b>每月</b>节省",
+        "noSaving": "无预计节省",
+        "savingNote": "基于您当前的银行卡费率与 Aryze 指示性固定交易定价的对比。",
+        "negativeNote": "在此支付金额下，当前银行卡定价可能更便宜。",
+        "monthlyVolume": "每月支付额",
+        "currentCardCost": "当前银行卡成本",
+        "yearlySavings": "预计每年节省",
+        "fixedPrice": "Aryze 固定价格",
+        "perTx": "{price} / 笔"
+      }
+    }
+  },
+  "stablecoinFactory": {
+    "hero": {
+      "eyebrow": "Stablecoin Factory",
+      "title": "更快地推出一款简单的稳定币。",
+      "body": "面向已有清晰稳定币构想的开发者和技术团队的即将推出的部署流程。"
+    },
+    "forBody": "开发者、技术团队、产品团队、创新团队以及处于探索阶段的运营方。",
+    "helpsBody": "从稳定币构想走向简单部署，无需冗长的企业流程。",
+    "comingSoon": {
+      "eyebrow": "敬请期待",
+      "title": "该产品页面尚未启用。",
+      "body": "Pay by Bank 是当前的重点。Stablecoin Factory 仍是 Aryze 产品架构的一部分。"
+    }
+  },
+  "digitalCash": {
+    "hero": {
+      "eyebrow": "Digital Cash",
+      "title": "合规地运营数字货币。",
+      "body": "面向已持牌、且有真实数字货币运营需求的机构的即将推出的基础设施层。"
+    },
+    "forBody": "已持牌机构，涉及数字货币、结算、资金管理、流动性或价值转移等用例。",
+    "helpsBody": "在机构自有的牌照、治理与管控下运营数字货币。",
+    "comingSoon": {
+      "eyebrow": "敬请期待",
+      "title": "该产品页面尚未启用。",
+      "body": "Pay by Bank 是当前的重点。Digital Cash 仍是 Aryze 产品组合中面向机构的基础设施方向。"
+    }
+  },
+  "sandbox": {
+    "intro": {
+      "eyebrow": "Aryze Pay by Bank",
+      "title": "获取 Pay by Bank 沙盒访问权限",
+      "body": "测试一套直接的账户到账户支付流程，专为需要更快结算、更低支付摩擦以及对收款更强管控的商户而打造。",
+      "body2": "告诉我们您的业务、支付配置以及您想测试的内容。我们将据此判断 Pay by Bank 是否合适，并为您的用例准备相应的沙盒访问权限。"
+    },
+    "aside": {
+      "eyebrow": "沙盒概览",
+      "title": "为以支付为核心的商户而打造",
+      "body": "Pay by Bank 专为以下商户设计：支付会影响利润、结算、现金流、客户体验、拒付、退款、对账以及日常运营。",
+      "benefits": {
+        "one": "在上线前测试支付流程",
+        "two": "分享您的支付配置和用例",
+        "three": "获取适合您业务的沙盒访问权限"
+      }
+    },
+    "form": {
+      "stepProgress": "第 {current} 步，共 {total} 步",
+      "stepTitles": {
+        "company": "您的公司",
+        "business": "您的业务",
+        "payment": "当前支付配置",
+        "intent": "沙盒目标"
+      },
+      "consent": "提交此表单即表示您同意 Aryze 就您的沙盒申请及相关产品信息与您联系。",
+      "back": "上一步",
+      "continue": "继续",
+      "submit": "提交申请",
+      "submitting": "提交中...",
+      "fields": {
+        "workEmail": "工作邮箱",
+        "workEmailPlaceholder": "name@company.com",
+        "fullName": "全名",
+        "fullNamePlaceholder": "您的全名",
+        "companyName": "公司名称",
+        "companyNamePlaceholder": "公司有限公司",
+        "companyWebsite": "公司网站",
+        "companyWebsitePlaceholder": "https://company.com",
+        "role": "您的职位",
+        "rolePlaceholder": "请选择职位",
+        "market": "您的业务在哪些地区运营？",
+        "marketPlaceholder": "请选择市场",
+        "businessType": "您属于哪类业务？",
+        "businessTypePlaceholder": "请选择业务类型",
+        "paymentFlow": "您想改进或测试哪种支付流程？",
+        "paymentFlowPlaceholder": "请选择支付流程",
+        "paymentMethods": "您目前使用哪些支付方式？",
+        "monthlyVolume": "您预计的每月交易量是多少？",
+        "monthlyVolumePlaceholder": "请选择交易量",
+        "averageSize": "您的平均交易金额是多少？",
+        "averageSizePlaceholder": "请选择平均金额",
+        "paymentChallenges": "您目前主要的支付挑战是什么？",
+        "sandboxTests": "您想在沙盒中测试什么？",
+        "technicalTeam": "您是否有可进行测试的技术团队？",
+        "technicalTeamPlaceholder": "请选择准备情况",
+        "testingStart": "您希望何时开始测试？",
+        "testingStartPlaceholder": "请选择时间安排",
+        "additionalContext": "还有什么需要我们了解的吗？",
+        "additionalContextPlaceholder": "向我们介绍您的支付流程、当前配置或想测试的内容。",
+        "notSure": "不确定"
+      },
+      "errors": {
+        "workEmailRequired": "工作邮箱为必填项。",
+        "workEmailInvalid": "请输入有效的工作邮箱。",
+        "fullNameRequired": "全名为必填项。",
+        "companyNameRequired": "公司名称为必填项。",
+        "companyWebsiteRequired": "公司网站为必填项。",
+        "companyWebsiteInvalid": "请输入有效的公司网站。",
+        "roleRequired": "职位为必填项。",
+        "marketRequired": "请选择一个市场。",
+        "businessTypeRequired": "业务类型为必填项。",
+        "paymentFlowRequired": "支付流程为必填项。",
+        "selectAtLeastOne": "请至少选择一项。",
+        "monthlyVolumeRequired": "每月交易量为必填项。",
+        "technicalTeamRequired": "技术团队准备情况为必填项。",
+        "testingStartRequired": "测试时间安排为必填项。"
+      },
+      "options": {
+        "roles": {
+          "founder": "创始人 / CEO",
+          "cfo": "CFO / 财务负责人",
+          "headPayments": "支付负责人",
+          "paymentsManager": "支付经理",
+          "productLead": "产品负责人",
+          "opsLead": "运营负责人",
+          "riskLead": "风控 / 反欺诈负责人",
+          "cto": "CTO / 工程负责人",
+          "developer": "开发者 / 技术负责人",
+          "other": "其他"
+        },
+        "markets": {
+          "uk": "英国",
+          "denmark": "丹麦",
+          "eu": "欧盟",
+          "global": "全球",
+          "other": "其他"
+        },
+        "businessTypes": {
+          "gaming": "游戏",
+          "betting": "博彩",
+          "trading": "交易",
+          "highRisk": "高风险商户",
+          "ecommerce": "电子商务",
+          "wallet": "钱包",
+          "remittance": "汇款",
+          "marketplace": "市场平台",
+          "financialServices": "金融服务",
+          "other": "其他以支付为核心的业务"
+        },
+        "paymentFlows": {
+          "checkout": "结账支付",
+          "deposits": "入金",
+          "topups": "充值",
+          "funding": "客户充值",
+          "highValue": "大额支付",
+          "recurring": "周期性支付",
+          "refunds": "退款",
+          "notSure": "尚不确定"
+        },
+        "paymentMethods": {
+          "cards": "银行卡",
+          "bankTransfer": "银行转账",
+          "openBanking": "开放银行",
+          "wallets": "钱包",
+          "crypto": "加密货币 / 稳定币",
+          "local": "本地支付方式",
+          "other": "其他"
+        },
+        "monthlyVolumes": {
+          "under1k": "少于 1,000 笔交易",
+          "1to10k": "1,000 至 10,000 笔交易",
+          "10to100k": "10,000 至 100,000 笔交易",
+          "100kPlus": "100,000 笔以上交易",
+          "notSure": "不确定"
+        },
+        "paymentChallenges": {
+          "highFees": "银行卡费用过高",
+          "slowSettlement": "结算太慢",
+          "chargebacks": "拒付或争议带来问题",
+          "refunds": "退款难以管理",
+          "reconciliation": "对账需要太多人工",
+          "visibility": "支付状态可见性不足",
+          "acceptance": "银行卡受理不稳定",
+          "alternative": "我们想要比银行卡通道更好的替代方案",
+          "other": "其他"
+        },
+        "sandboxTests": {
+          "initiation": "支付发起",
+          "authorisation": "客户银行授权流程",
+          "checkout": "结账支付流程",
+          "deposit": "入金或充值流程",
+          "callbacks": "支付状态回调",
+          "refunds": "退款处理",
+          "reporting": "报表与对账",
+          "dashboard": "商户控制台",
+          "api": "API 集成",
+          "notSure": "尚不确定"
+        },
+        "techReadiness": {
+          "now": "是，我们现在就能测试",
+          "notImmediately": "是，但不是立即",
+          "commercialFirst": "否，我们需要先进行商务评估",
+          "notSure": "不确定"
+        },
+        "timelines": {
+          "asap": "尽快",
+          "2weeks": "2 周内",
+          "1month": "1 个月内",
+          "thisQuarter": "本季度晚些时候",
+          "notSure": "尚不确定"
+        },
+        "bands": {
+          "uk": {
+            "b1": "低于 £25",
+            "b2": "£25 至 £100",
+            "b3": "£100 至 £500",
+            "b4": "£500 至 £2,500",
+            "b5": "£2,500+"
+          },
+          "denmark": {
+            "b1": "低于 200 DKK",
+            "b2": "200 至 750 DKK",
+            "b3": "750 至 3,750 DKK",
+            "b4": "3,750 至 18,500 DKK",
+            "b5": "18,500 DKK+"
+          },
+          "eu": {
+            "b1": "低于 €25",
+            "b2": "€25 至 €100",
+            "b3": "€100 至 €500",
+            "b4": "€500 至 €2,500",
+            "b5": "€2,500+"
+          },
+          "global": {
+            "b1": "低于 $25",
+            "b2": "$25 至 $100",
+            "b3": "$100 至 $500",
+            "b4": "$500 至 $2,500",
+            "b5": "$2,500+"
+          }
+        }
+      }
+    },
+    "success": {
+      "resendEyebrow": "申请已收到",
+      "mailtoEyebrow": "申请已准备就绪",
+      "resendTitle": "谢谢——我们会尽快与您联系。",
+      "mailtoTitle": "您的沙盒申请邮件已准备就绪。",
+      "resendBody": "您的沙盒申请已发送至 Aryze 团队。预计将在一个工作日内收到包含后续步骤的回复。",
+      "mailtoBody": "您的邮件应用应会打开一封发送给 Aryze 的沙盒申请邮件。请发送该邮件，以分享您的公司、支付用例和技术配置。",
+      "back": "返回 Pay by Bank"
+    }
+  }
+}

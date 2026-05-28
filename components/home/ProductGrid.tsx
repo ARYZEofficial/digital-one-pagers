@@ -1,67 +1,48 @@
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { ArrowRight } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/Button";
 import { RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { cn } from "@/lib/cn";
 
 type Product = {
-  eyebrow: string;
+  id: "payByBank" | "stablecoinFactory" | "digitalCash";
   title: string;
-  tagline: string;
-  body: string;
   href: string;
   state: "live" | "soon";
 };
 
 const products: Product[] = [
+  { id: "payByBank", title: "Pay by Bank", href: "/pay-by-bank", state: "live" },
   {
-    eyebrow: "High-volume merchants",
-    title: "Pay by Bank",
-    tagline: "Get paid better.",
-    body:
-      "For UK payment-driven merchants where card friction, settlement, or chargebacks affect performance.",
-    href: "/pay-by-bank",
-    state: "live",
-  },
-  {
-    eyebrow: "Token issuers",
+    id: "stablecoinFactory",
     title: "Stablecoin Factory",
-    tagline: "Launch faster.",
-    body:
-      "For builders and technical teams with a clear stablecoin idea.",
     href: "/stablecoin-factory",
     state: "soon",
   },
   {
-    eyebrow: "Licensed institutions",
+    id: "digitalCash",
     title: "Digital Cash",
-    tagline: "Operate properly.",
-    body:
-      "For already-licensed institutions with digital cash operating needs.",
     href: "/digital-cash",
     state: "soon",
   },
 ];
 
 export function ProductGrid() {
+  const t = useTranslations("home.products");
+
   return (
-    <section
-      aria-labelledby="product-overview-title"
-      className="grid gap-5"
-    >
+    <section aria-labelledby="product-overview-title" className="grid gap-5">
       <SectionHeading
-        eyebrow="Product one-pagers"
-        title="Choose where to go next."
+        eyebrow={t("eyebrow")}
+        title={t("title")}
         size="large"
         id="product-overview-title"
       />
-      <RevealGroup
-        className="grid gap-4 lg:grid-cols-3"
-        stagger={0.08}
-      >
+      <RevealGroup className="grid gap-4 lg:grid-cols-3" stagger={0.08}>
         {products.map((p) => (
-          <RevealItem key={p.title} className="h-full">
+          <RevealItem key={p.id} className="h-full">
             <ProductCard product={p} />
           </RevealItem>
         ))}
@@ -71,6 +52,8 @@ export function ProductGrid() {
 }
 
 function ProductCard({ product }: { product: Product }) {
+  const t = useTranslations("home.products");
+  const c = useTranslations("common");
   const isLive = product.state === "live";
   const className = cn(
     "group relative flex h-full flex-col rounded-xl p-7 transition-all duration-200",
@@ -93,7 +76,7 @@ function ProductCard({ product }: { product: Product }) {
       ) : null}
       <div className="relative flex h-full flex-col">
         <p className={cn("section-label", isLive && "text-white/72")}>
-          {product.eyebrow}
+          {t(`${product.id}.eyebrow`)}
         </p>
         <h3
           className={cn(
@@ -104,7 +87,7 @@ function ProductCard({ product }: { product: Product }) {
           {product.title}
         </h3>
         <p className="mt-2 text-base font-semibold text-yellow">
-          {product.tagline}
+          {t(`${product.id}.tagline`)}
         </p>
         <p
           className={cn(
@@ -112,12 +95,12 @@ function ProductCard({ product }: { product: Product }) {
             isLive ? "text-white/72" : "text-muted",
           )}
         >
-          {product.body}
+          {t(`${product.id}.body`)}
         </p>
         <div className="mt-auto pt-6">
           {isLive ? (
             <span className="inline-flex items-center gap-2 text-sm font-semibold text-white">
-              Read more
+              {c("readMore")}
               <ArrowRight
                 aria-hidden
                 className="h-4 w-4 transition-transform duration-200 ease-out group-hover:translate-x-1"
@@ -125,7 +108,7 @@ function ProductCard({ product }: { product: Product }) {
             </span>
           ) : (
             <span className="inline-flex w-fit items-center justify-center rounded-full border border-[rgba(25,34,53,0.10)] bg-white/78 px-3.5 py-2 text-xs font-medium text-muted">
-              Coming soon
+              {c("comingSoon")}
             </span>
           )}
         </div>
@@ -144,6 +127,9 @@ function ProductCard({ product }: { product: Product }) {
 }
 
 export function HomeBottomCta() {
+  const t = useTranslations("home.bottomCta");
+  const c = useTranslations("common");
+
   return (
     <section className="relative overflow-hidden rounded-2xl border border-[rgba(25,34,53,0.34)] bg-gradient-to-br from-navy to-[#101827] p-8 text-white shadow-[var(--shadow-brand-strong)] sm:p-10">
       <div
@@ -157,25 +143,22 @@ export function HomeBottomCta() {
       />
       <div className="relative grid items-center gap-6 sm:grid-cols-[minmax(0,1fr)_auto]">
         <div className="max-w-[58ch]">
-          <p className="section-label text-white/72">For payment-driven merchants</p>
-          <h2 className="mt-3 display-2 text-white">
-            See what fixed pricing could mean for your business.
-          </h2>
+          <p className="section-label text-white/72">{t("eyebrow")}</p>
+          <h2 className="mt-3 display-2 text-white">{t("title")}</h2>
           <p className="mt-3 max-w-[52ch] text-sm leading-relaxed text-white/72 sm:text-base">
-            Run the savings calculator on Pay by Bank, then book a call to walk
-            through your payment flow.
+            {t("body")}
           </p>
         </div>
         <div className="grid gap-3 sm:justify-items-end">
           <Button href="/pay-by-bank" variant="yellow" withArrow>
-            Open Pay by Bank
+            {t("ctaPrimary")}
           </Button>
           <Button
             href="https://cal.com/rabiiahmadesteitie/lets-connect"
             variant="outline-on-dark"
             external
           >
-            Talk to us
+            {c("talkToUs")}
           </Button>
         </div>
       </div>
